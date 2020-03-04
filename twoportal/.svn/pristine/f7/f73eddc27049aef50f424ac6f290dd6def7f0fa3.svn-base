@@ -1,0 +1,38 @@
+package kr.ac.twoportal.web.interceptor;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import kr.ac.twoportal.dto.LoginInfo;
+import kr.ac.twoportal.dto.NavLeftDto;
+import kr.ac.twoportal.service.NavService;
+
+public class LoginCheckInterCepter extends HandlerInterceptorAdapter{
+	
+	@Autowired
+	private NavService navService;
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		
+		System.out.println("sang-인터셉터 진입");
+		LoginInfo loginInfo = 	(LoginInfo) request.getSession().getAttribute("loginInfo");
+		
+		if(null == loginInfo) {
+			System.out.println("sang-인터셉터-로그인 세션 확인 실패 (null)");
+			return false;
+		}
+		System.out.println("sang-인터셉터-로그인세션 확인  성공");
+		List<NavLeftDto> navLefts = navService.getNavLeftsByJob(loginInfo.getJob());
+		request.setAttribute("navLefts",navLefts);
+		System.out.println("sang-인터셉터 탈출");
+		return true;
+	
+	}
+}

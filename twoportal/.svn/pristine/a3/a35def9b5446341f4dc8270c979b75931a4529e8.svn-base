@@ -1,0 +1,9 @@
+package kr.ac.twoportal.service;
+
+import kr.ac.twoportal.vo.Tuition;
+
+public interface TuitionService {
+
+	boolean insertTuition(Tuition tuition);
+
+}

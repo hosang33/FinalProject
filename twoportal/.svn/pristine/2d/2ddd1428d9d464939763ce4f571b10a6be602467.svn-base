@@ -1,0 +1,17 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import kr.ac.twoportal.vo.Board;
+import kr.ac.twoportal.vo.Criteria;
+
+public interface BoardService {
+	  //게시글 총 개수 파악
+	  int countBoardListTotal();
+	  //게시글 조회
+	  List<Board> selectBoardList(Criteria cri);
+	  //게시글 조회
+	  List<Board> selectBoardListNotParameter();
+
+	 
+	  
+}

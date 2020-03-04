@@ -1,0 +1,8 @@
+package kr.ac.twoportal.vo;
+
+public class LectureReview {
+
+	private int no;
+	private int totalScore;
+	private int listNo;
+}

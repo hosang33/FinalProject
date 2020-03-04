@@ -1,0 +1,10 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.LectureCancel;
+
+public interface LectureCancelDao {
+
+	// 잡관련
+	LectureCancel getLectureCancelByNo(int lectCancellNo);
+	void updateLectureCancel (LectureCancel lectureCancel);
+}

@@ -1,0 +1,25 @@
+package kr.ac.twoportal.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.StudentDao;
+import kr.ac.twoportal.dto.StudentMypageDto;
+
+@Service
+public class MypageServiceImpl implements MyPageService{
+	@Autowired
+	private StudentDao studentDao;
+
+	@Override
+	public StudentMypageDto getMyPageDto(int stuNo) {
+		return studentDao.getMyPageForm(stuNo);
+	}
+
+	@Override
+	public void PwdIsSame(String pwd, String pwdSecond) {
+		if(pwd!=pwdSecond) {
+			//throw new 
+		}
+	}
+}

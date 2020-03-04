@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.StudentDao">
+
+	<select id="getStudentById" parameterType="string" resultType="Student">
+		select 
+			stu_no				as no,
+			stu_name			as name,
+			stu_id				as id,
+			stu_pwd				as pwd,
+			stu_age				as age,
+			stu_status			as status,
+			stu_grade			as grade,
+			stu_admission_date	as admission,
+			stu_graduated_date	as graduated, 
+			stu_checked_pwd		as checkedPwd, 
+			stu_address			as address,
+			stu_email			as email,
+			stu_phone			as phone,
+			stu_bank_name		as bankName, 
+			stu_account_number	as accountNumber,
+			dept_no				as deptNo,
+			stu_image			as imageName
+		from
+			school_students
+		where
+			stu_id = #{value}
+	</select>
+	
+	<select id="getAllStudent" resultType="Student">
+		select 
+			stu_no				as no,
+			stu_name			as name,
+			stu_id				as id,
+			stu_pwd				as pwd,
+			stu_age				as age,
+			stu_status			as status,
+			stu_grade			as grade,
+			stu_admission_date	as admission,
+			stu_graduated_date	as graduated, 
+			stu_checked_pwd		as checkedPwd, 
+			stu_address			as address,
+			stu_email			as email,
+			stu_phone			as phone,
+			stu_bank_name		as bankName, 
+			stu_account_number	as accountNumber,
+			dept_no				as deptNo
+		from
+			school_students
+		order by stu_no desc	
+	</select>
+	
+	<insert id="addOneStudent" parameterType="Student">
+		insert into school_students
+		(stu_name, stu_id, stu_pwd, stu_age, stu_status, stu_grade, stu_checked_pwd, stu_address, stu_email, stu_phone, stu_bank_name, stu_account_number, dept_no, stu_access, stu_image)
+		values
+		(#{name}, #{id}, #{pwd}, #{age}, '재학중', #{grade}, 'N',#{address}, #{email}, #{phone}, #{bankName}, #{accountNumber}, #{deptNo}, 'student', #{imageName})
+	</insert>
+</mapper>

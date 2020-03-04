@@ -1,0 +1,19 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+
+import kr.ac.twoportal.vo.LectureList;
+
+public interface LectureListDao {
+
+	LectureList getLectureListBylectstuNos(LectureList lectureList);
+
+	List<LectureList> getLecturListsByLectNo(int lectNo);
+
+	LectureList getLectureListByLecNo(int lecNo);
+
+	List<LectureList> getLecturListsByListNo(int listNo);
+
+	LectureList getLecturListByListNo(int listNo);
+
+}

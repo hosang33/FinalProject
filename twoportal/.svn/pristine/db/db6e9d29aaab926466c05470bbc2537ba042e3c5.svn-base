@@ -1,0 +1,116 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%@include file="../../common/navheader.jsp" %>
+<div class="container-fluid">
+	<div class="row">
+	<%@include file="../../common/navleft.jsp" %>
+		<div class="col-sm-10">
+			<div class="row">
+				<div class="col-sm-10">
+					<div class="page-header">
+						<h2>사이버 시험</h2>
+					</div>
+					
+					<div class="panel panel-danger">
+						<div class="panel-heading text-center">
+							<strong>현재 수강중인 사이버 강의가 없습니다.</strong>
+						</div>
+					</div>
+					
+					<hr>
+					<div class="row">
+						<div class="col-sm-4">
+							<button type="button" class="btn btn-default btn-block">C언어</button>
+						</div>
+						<div class="col-sm-4">
+							<button type="button" class="btn btn-default btn-block">디지털공학개론</button>
+						</div>
+						<div class="col-sm-4">
+							<button type="button" class="btn btn-default btn-block">전자계산기구조</button>
+						</div>
+					</div>
+					<hr>
+					
+					<div class="panel panel-danger">
+						<div class="panel-heading text-center">
+							<strong>해당 과목의 시험기간이 아닙니다.</strong>
+						</div>
+					</div> 
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="panel panel-danger">
+								<div class="panel-heading">
+									<h3 class="panel-title">시험 주의사항</h3>
+								</div>
+								<div class="panel-body">
+									<p><strong>반드시 TEST시험을 먼저 응시해야 합니다.</strong></p>
+									<p>시험시간은 전과목 동일한 <strong>60분</strong>입니다.</p>
+									<p><strong>응시여부가 N으로 바뀐 것을 꼭 확인 하세요.</strong></p>
+								</div>
+							</div>							
+						</div>
+						<div class="col-sm-6">
+							<div class="panel panel-danger">
+								<div class="panel-heading">
+									<h3 class="panel-title">상세정보</h3>
+								</div>
+								<div class="panel-body">
+									<p><strong>과목 : </strong>C언어</p>
+									<p><strong>학기 : </strong>2020-1</p>
+									<p><strong>시험기간 : </strong>2020-1-1 ~ 2020-1-4 <strong>[4일간]</strong></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table table-bordered text-center">
+								<thead>
+									<tr>
+										<th class="text-center">학기</th>
+										<th class="text-center">과목명</th>
+										<th class="text-center">응시여부</th>
+										<th class="text-center">시험응시</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-1</td>
+										<td>디지털공학개론 테스트시험</td>
+										<td>N</td>
+										<td>
+											<button type="button" class="btn btn-xs btn-danger">시험응시</button>
+										</td>
+									</tr>
+									<tr>
+										<td>2020-1</td>
+										<td>디지털공학개론</td>
+										<td>N</td>
+										<td>
+											<button type="button" class="btn btn-xs btn-danger">시험응시</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

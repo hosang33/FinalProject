@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.LectureDayCheckDao">
+
+	<select id="getDuplicateCheck" parameterType="int" resultType="LectureDayCheck">
+		select 
+			daycheck_no			  	no,	
+			lecture_list_no			listNo,
+			daycheck_create_date	createDate
+		from
+			school_student_daychecks
+		where
+			lecture_list_no = #{value}
+		and
+			DATE_FORMAT(daycheck_create_date, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+		
+			
+	</select>
+
+
+	<insert id="insertDayCheck" parameterType="int">
+		insert into
+			school_student_daychecks(lecture_list_no)
+		value
+			(#{value})
+	</insert>
+	
+	
+	<select id="getDayChecksByLecListNo" parameterType="int" resultType="LectureDayCheck">
+		select 
+			daycheck_no			  	no,	
+			lecture_list_no			listNo,
+			daycheck_create_date	createDate
+		from
+			school_student_daychecks
+		where
+			lecture_list_no = #{value}
+	</select>
+	
+</mapper>

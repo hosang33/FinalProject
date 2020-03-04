@@ -1,0 +1,97 @@
+package kr.ac.twoportal.dto;
+
+import java.util.Date;
+
+import org.apache.ibatis.type.Alias;
+
+@Alias("LectureandCancelDto")
+public class LectureandCancelDto {
+	private int lectNo;
+	private int proNo;
+	private Date lectCreateDate;
+	private int lectSemester;
+	private String lectStatus;
+	private int cacellNo;
+	private Date calcellStartDate;
+	private Date calcellEndDate;
+
+	public LectureandCancelDto () {}
+
+	public Date getLectCreateDate() {
+		return lectCreateDate;
+	}
+
+	public void setLectCreateDate(Date lectCreateDate) {
+		this.lectCreateDate = lectCreateDate;
+	}
+
+	public Date getCalcellStartDate() {
+		return calcellStartDate;
+	}
+
+	public void setCalcellStartDate(Date calcellStartDate) {
+		this.calcellStartDate = calcellStartDate;
+	}
+
+	public Date getCalcellEndDate() {
+		return calcellEndDate;
+	}
+
+	public void setCalcellEndDate(Date calcellEndDate) {
+		this.calcellEndDate = calcellEndDate;
+	}
+
+	public int getLectNo() {
+		return lectNo;
+	}
+
+	public void setLectNo(int lectNo) {
+		this.lectNo = lectNo;
+	}
+
+	public int getProNo() {
+		return proNo;
+	}
+
+	public void setProNo(int proNo) {
+		this.proNo = proNo;
+	}
+
+	
+
+	public int getLectSemester() {
+		return lectSemester;
+	}
+
+	public void setLectSemester(int lectSemester) {
+		this.lectSemester = lectSemester;
+	}
+
+	public String getLectStatus() {
+		return lectStatus;
+	}
+
+	public void setLectStatus(String lectStatus) {
+		this.lectStatus = lectStatus;
+	}
+
+	public int getCacellNo() {
+		return cacellNo;
+	}
+
+	public void setCacellNo(int cacellNo) {
+		this.cacellNo = cacellNo;
+	}
+
+
+	@Override
+	public String toString() {
+		return "LectureandCancelDto [lectNo=" + lectNo + ", proNo=" + proNo + ", lectCreateDate=" + lectCreateDate
+				+ ", lectSemester=" + lectSemester + ", lectStatus=" + lectStatus + ", cacellNo=" + cacellNo
+				+ ", calcellStartDate=" + calcellStartDate + ", calcellEndDate=" + calcellEndDate + "]";
+	}
+
+
+	
+	
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.StudentDao">
+
+	<select id="getStudentById" parameterType="String" resultType="Student">
+		select 
+			stu_no				as no,
+			stu_name			as name,
+			stu_id				as id,
+			stu_pwd				as pwd,
+			stu_age				as age,
+			stu_status			as status,
+			stu_grade			as grade,
+			stu_admission_date	as admission,
+			stu_graduated_date	as graduated, 
+			stu_checked_pwd		as checkedPwd, 
+			stu_address			as address,
+			stu_email			as email,
+			stu_phone			as phone,
+			stu_bank_name		as bankName, 
+			stu_account_number	as accountNumber,
+			dept_no				as deptNo,
+			stu_access			as stuAccess
+		from
+			school_students
+		where
+			stu_id = #{value}
+	</select>
+</mapper>

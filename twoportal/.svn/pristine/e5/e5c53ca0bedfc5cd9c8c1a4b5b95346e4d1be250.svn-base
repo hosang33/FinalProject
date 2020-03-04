@@ -1,0 +1,14 @@
+package kr.ac.twoportal.web.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class TutionController {
+
+	@GetMapping("/staff/tutionAdd.hta")
+	public String TutionAdd() {
+		System.out.println("들어옴");
+		return "staff/budget/tutionAdd";
+	}
+}

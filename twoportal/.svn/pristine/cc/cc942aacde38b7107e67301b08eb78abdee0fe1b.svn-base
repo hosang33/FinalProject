@@ -1,0 +1,15 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+
+import kr.ac.twoportal.vo.LectureDayCheck;
+
+public interface LectureDayCheckDao {
+
+	void insertDayCheck(int no);
+
+	LectureDayCheck getDuplicateCheck(int listNo);
+
+	List<LectureDayCheck> getDayChecksByLecListNo(int no);
+
+}

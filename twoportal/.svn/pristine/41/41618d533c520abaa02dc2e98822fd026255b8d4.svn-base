@@ -1,0 +1,105 @@
+package kr.ac.twoportal.dto;
+
+import java.util.Date;
+
+import org.apache.ibatis.type.Alias;
+
+import kr.ac.twoportal.utils.DateUtils;
+
+@Alias("LectureReviewDto")
+public class LectureReviewDto {
+	
+	private int lectNo;
+	private Date lectCreatedate;
+	private String lectSemester;
+	private String proName;
+	private String subName;
+	private String deptName;
+	private String iscompleted;
+	private double lectavg;
+	private int lectListNo;
+	
+	public String getDate() {
+		return DateUtils.getYYYYMMDD(lectCreatedate);
+	}
+	
+	public String getStar() {
+		if (lectavg >= 21) {
+			return "★★★★★";
+		} else if (lectavg >= 16) {
+			return "★★★★☆";
+		} else if (lectavg >= 11) {
+			return "★★★☆☆";
+		} else if (lectavg >= 6) {
+			return "★★☆☆☆";			
+		} else {
+			return "★☆☆☆☆";						
+		}
+	}
+	
+	public int getLectListNo() {
+		return lectListNo;
+	}
+
+	public void setLectListNo(int lectListNo) {
+		this.lectListNo = lectListNo;
+	}
+
+	public int getLectNo() {
+		return lectNo;
+	}
+	public void setLectNo(int lectNo) {
+		this.lectNo = lectNo;
+	}
+	public Date getLectCreatedate() {
+		return lectCreatedate;
+	}
+	public void setLectCreatedate(Date lectCreatedate) {
+		this.lectCreatedate = lectCreatedate;
+	}
+	public String getLectSemester() {
+		return lectSemester;
+	}
+	public void setLectSemester(String lectSemester) {
+		this.lectSemester = lectSemester;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+	public String getSubName() {
+		return subName;
+	}
+	public void setSubName(String subName) {
+		this.subName = subName;
+	}
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+	public String getIscompleted() {
+		return iscompleted;
+	}
+	public void setIscompleted(String iscompleted) {
+		this.iscompleted = iscompleted;
+	}
+	
+	public double getLectavg() {
+		return lectavg;
+	}
+	public void setLectavg(double lectavg) {
+		this.lectavg = lectavg;
+	}
+	@Override
+	public String toString() {
+		return "LectureReviewDto [lectNo=" + lectNo + ", lectCreatedate=" + lectCreatedate + ", lectSemester="
+				+ lectSemester + ", proName=" + proName + ", subName=" + subName + ", deptName=" + deptName
+				+ ", iscompleted=" + iscompleted + "]";
+	}
+	
+	
+}

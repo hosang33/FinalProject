@@ -1,0 +1,17 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class LectureCancel {
+
+	private int no;
+	private int proNo;
+	private int lectNo;
+	private String reason;
+	private Date reqDate;
+	private Date respDate;
+	private Date startDate;
+	private Date endDate;
+	
+	
+}

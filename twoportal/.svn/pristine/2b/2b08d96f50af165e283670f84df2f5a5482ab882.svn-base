@@ -1,0 +1,135 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+	<style>
+
+	</style>   
+</head>     
+<body>  
+<div class="container-fluid" id="app"> 
+	<%@include file="../../common/navheader.jsp" %>  
+	<div class="row" >
+		<div class="col-sm-2">
+			<%@include file="../../common/navleft.jsp" %>
+		</div>
+		<div class="col-sm-10" >
+			<div class="page-header" style="margin-top: 0px;">
+				<h4>휴강신청/조회<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#lghModalcancel">휴강 신청</button></h4>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table">
+						<colgroup>
+							<col width="12%">
+							<col width="12%">
+							<col width="20%">
+							<col width="32%">
+							<col width="12%">
+							<col width="12%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>신청일자</th>
+								<th>시작일자</th>
+								<th>과목명</th>
+								<th>사유</th>
+								<th>종료일자</th>
+								<th>승인일자</th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr v-if="cancels.length == 0">
+								<td colspan="6" class="text-center">조회된 휴강이 없습니다.</td>
+							</tr>
+							<tr v-for="cancel in cancels">  
+								<td>{{cancel.mycancellReqDate}}</td>
+								<td>{{cancel.mycalcellStartDate}}</td>
+								<td>{{cancel.subName}}</td>
+								<td>{{cancel.cancellReason}}</td>
+								<td>{{cancel.mycalcellEndDate}}</td>
+								<td v-if="cancel.cancellRespDate == null">미승인</td>
+								<td v-else>{{cancel.mycancellRespDate}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div id="lghModalcancel" class="modal fade" role="dialog">
+					<div class="modal-dialog">  
+				    	<div class="modal-content">
+				      		<div class="modal-header">
+				        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+				        		<h4 class="modal-title">휴강신청하기</h4>
+				        	</div>
+					      	<div class="modal-body">
+								<form class="form-horizontal well">
+						  			<div class="form-group">
+										<label class="control-label col-sm-2">시작일자</label>    
+										<div class="col-sm-4">
+											<input type="date" class="form-control" name="startdate" >
+										</div>
+										<label class="control-label col-sm-2">종료일자</label>    
+										<div class="col-sm-4">
+											<input type="date" class="form-control" name="enddate" >
+										</div>
+									</div>
+									<div class="form-group">   
+										<label class="control-label col-sm-6" style="text-align: left;">해당날짜의 강의목록</label> 
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">      
+											<ul class="list-group">
+												<li class="list-group-item">경영학개론</li>
+											</ul> 
+										</div>   
+									</div>      
+									<div class="form-group">
+										<label class="control-label col-sm-2">휴강사유</label>									
+									</div>
+						  			<div class="form-group" >    
+										<div class="col-sm-12">
+											<textarea class="form-control" rows="5" cols="12" style="width: 100%;" name="object"></textarea>
+										</div>
+									</div>
+									<button type="button" class="btn btn-primary btn-block" >휴강신청하기</button>
+				 				</form>
+							</div>  
+				    	</div>
+				  	</div>    
+				</div>
+				
+			</div>
+		</div>       
+	</div>	  
+</div>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data: {
+			cancels:[]
+		},
+		methods: {
+			list : function() {
+				$.getJSON('/professor/board/cancellist.hta', function(result) { 
+					app.cancels = result.cancels;
+				});
+			},
+		}
+	});       
+	app.list();
+   
+	
+	        
+</script>
+</body> 
+</html>

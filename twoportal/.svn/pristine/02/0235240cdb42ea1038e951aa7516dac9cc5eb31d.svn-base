@@ -1,0 +1,102 @@
+package kr.ac.twoportal.dto;
+
+import org.apache.ibatis.type.Alias;
+
+@Alias("RegisterListDto")
+public class RegisterListDto {
+
+	// school_subjects : 과목번호/학과번호/학점/전공,교양/대상학년
+	private int no;
+	private int deptNo;
+	private int credit;
+	private String major;
+	private int targetYear;
+	
+	// school_lectures : 강의시간/강의실/인원
+	// 강의명 은 없을까? ?? (강의번호??)
+	private String place;
+	private int room;
+	private int totalNumber;
+	
+	// school_professors : 담당교수명
+	private String name;
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getDeptNo() {
+		return deptNo;
+	}
+
+	public void setDeptNo(int deptNo) {
+		this.deptNo = deptNo;
+	}
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public int getTargetYear() {
+		return targetYear;
+	}
+
+	public void setTargetYear(int targetYear) {
+		this.targetYear = targetYear;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	public int getRoom() {
+		return room;
+	}
+
+	public void setRoom(int room) {
+		this.room = room;
+	}
+
+	public int getTotalNumber() {
+		return totalNumber;
+	}
+
+	public void setTotalNumber(int totalNumber) {
+		this.totalNumber = totalNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "RegisterListDto [no=" + no + ", deptNo=" + deptNo + ", credit=" + credit + ", major=" + major
+				+ ", targetYear=" + targetYear + ", place=" + place + ", room=" + room + ", totalNumber=" + totalNumber
+				+ ", name=" + name + "]";
+	}
+}

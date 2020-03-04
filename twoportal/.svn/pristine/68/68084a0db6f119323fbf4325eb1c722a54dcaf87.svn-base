@@ -1,0 +1,11 @@
+package kr.ac.twoportal.vo;
+
+public class Salary {
+
+	private int no;
+	private String checked;
+	private int salary;
+	private int proNo;
+	private int staffNo;
+	
+}

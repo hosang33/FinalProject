@@ -1,0 +1,11 @@
+package kr.ac.twoportal.vo;
+
+import lombok.Data;
+
+@Data
+public class Department {
+
+	private int no;
+	private String name;
+	
+}

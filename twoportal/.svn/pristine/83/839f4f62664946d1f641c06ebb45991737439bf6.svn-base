@@ -1,0 +1,22 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.TestQuestionDao;
+import kr.ac.twoportal.vo.TestQuestion;
+
+@Service
+public class ExamServiceImpl implements ExamService {
+
+	@Autowired
+	private TestQuestionDao testQuestionDao;
+
+	@Override
+	public List<TestQuestion> getTestQuestionsByTestInfoNo(int testInfoNo) {
+		return testQuestionDao.getTestQuestionsByTestInfoNo(testInfoNo);
+	}
+	
+}

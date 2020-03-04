@@ -1,0 +1,16 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class Tuition {
+
+	private int no;
+	private int deptNo;
+	private int price;
+	private String quarter;
+	private String year;
+	private Date payStartDate;
+	private Date payEndDate;
+	private String isClose;
+	
+}

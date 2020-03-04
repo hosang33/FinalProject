@@ -1,0 +1,191 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.img-circle{
+		width: 50px; height: 50px;
+	}
+	.col-xs-6,#right-message-text,#right-alert-png {
+		padding-top: 15px;
+	}
+	.inline-form {
+	    border-radius: 10px;
+	}
+	#send-bar {
+	    position:absolute;
+	    bottom:0;
+	    width:90%;
+	    height:70px;  
+	}
+	body {
+		overflow-x:hidden;
+	}
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<%@include file="../common/navheader.jsp"%>
+		<div class="row">
+			<div class="col-sm-2">
+				<%@include file="../common/navleft.jsp"%>
+			</div>
+			<div class="col-sm-10">
+				<div class="row">
+					<div class="page-header" style="margin-top: 0px;">
+						<h2>실시간 문의</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="row" style="overflow:auto; overflow-x: hidden; height:500px;">
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">안녕하세요</div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 무슨일 이신가요?</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">장학금이 입금되지 않았습니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">오래걸리시나요?</div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 장학금은 3월 7일에 입금 될 예정입니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">네 감사합니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">장학금이 입금되지 않았습니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">장학금이 입금되지 않았습니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">장학금이 입금되지 않았습니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+								<div class="col-xs-6">장학금이 입금되지 않았습니다 </div>
+								<div class="col-xs-3"></div>
+								<hr width="98%">
+							</div>
+							<div class="row inline-form" >
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6">네 바로 확인 해 보겠습니다</div>
+								<div class="col-xs-3"><img class="img-circle" src="/resources/images/student/student0.jpg"/></div>
+								<hr width="98%">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-9"> 
+								<input type="text" class="form-control"	style="height:70px"/>
+							</div>
+							<div class="col-sm-3"> 
+								<input type="button" class="form-control" style="height:70px" value="전송">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="overflow:auto; overflow-x: hidden; height:500px;">
+						<div class="row inline-form"  style=" border:1px solid red;" >
+							<div class="col-sm-2"><img class="img-circle" src="/resources/images/student/student1.jpg"/></div>
+							<div class="col-sm-1" id="right-alert-png"><img alt="" src="/resources/images/chatIcons/alert.png" style="width: 20px; height: 20px;"></div>
+							<div class="col-sm-9" id="right-message-text">문의할게 있어요</div>
+						</div>
+						<div class="row inline-form" >
+							<div class="col-sm-2"><img class="img-circle" src="/resources/images/student/student2.jpg"/></div>
+							<div class="col-sm-1" id="right-alert-png"><img alt="" src="/resources/images/chatIcons/alert.png" style="width: 20px; height: 20px;"></div>
+							<div class="col-sm-9" id="right-message-text">네 감사합니다</div>
+							<hr width="98%">
+						</div>
+						<div class="row inline-form" >
+							<div class="col-sm-2"><img class="img-circle" src="/resources/images/student/student3.jpg"/></div>
+							<div class="col-sm-9" id="right-message-text">2월 7일부터 시작입니다</div>
+							<hr width="98%">
+						</div>
+						<div class="row inline-form" >
+							<div class="col-sm-2"><img class="img-circle" src="/resources/images/student/student4.jpg"/></div>
+							<div class="col-sm-9" id="right-message-text">좋은 하루 되세요</div>
+							<hr width="98%">
+						</div>
+						<div class="row inline-form" >
+							<div class="col-sm-2"><img class="img-circle" src="/resources/images/student/student5.jpg"/></div>
+							<div class="col-sm-9" id="right-message-text">확인 후 답장드리겠습니다</div>
+							<hr width="98%">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

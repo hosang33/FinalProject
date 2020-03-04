@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%@include file="../common/navheader.jsp" %>
+<div class="row" >
+	<%@include file="../common/navleft.jsp" %>
+	<div class="col-sm-10" >
+		<div class="page-header" style="margin-top: 0px;">
+			<h4>교수 메인페이지</h4>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">주간 일정<a class="pull-right"><small> > 자세히보기</small></a></div>
+				  	<div class="panel-body" style="height: 200px;">  
+				  		<table class="table">   
+				  			<tr>  
+			 					<th>월</th>
+			 					<td>경영학개론</td>
+			 					<td>조직경영론</td>
+			 					<td>조직경영론</td>
+			 				</tr>  
+				  			<tr>
+			 					<th>화</th>
+			 					<td>경영학개론</td>
+			 					<td>조직경영론</td>
+			 					<td></td>
+			 				</tr>
+				  			<tr>
+			 					<th>수</th>
+			 					<td>경영학개론</td>
+			 					<td>세미나</td>
+			 					<td></td>
+			 				</tr>
+				  			<tr>
+			 					<th>목</th>
+			 					<td>경영학개론</td>
+			 					<td>조직경영론</td>
+			 					<td></td>
+			 				</tr>
+				  			<tr>
+			 					<th>금</th>
+			 					<td>경영학개론</td>
+			 					<td>조직경영론</td>
+			 					<td></td>
+			 				</tr>
+				  		</table> 
+				  	</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">공지사항<a class="pull-right"><small> > 자세히보기</small></a></div>
+				  	<div class="panel-body">
+				  		<p> > 시험 일정 2/12~2/28 까지 입니다.</p>
+				  		<p> > 세미나로 2/3 휴강 입니다.</p>
+				  	</div>
+				</div>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">강의현황<a class="pull-right"><small> > 자세히보기</small></a></div>
+				  	<div class="panel-body">
+				  		<table class="table">
+				  			<thead>
+				  				<tr>
+				  					<th>학과</th>
+				  					<th>과목명</th>			  					
+				  					<th>강의목적</th>
+				  					<th>학점</th>
+				  					<th>전공여부</th>
+				  				</tr>
+				  			</thead>
+				  			<tbody>
+				  				<tr>
+				  					<td>경영학과</td>
+				  					<td>경영학개론</td>
+				  					<td>경영이란 무엇인가??</td>
+				  					<td>3 학점</td>
+				  					<td>전공</td>
+				  				</tr>
+				  			</tbody>
+				  		</table>
+				  	</div>
+				</div>							
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">안내</div>
+				  	<div class="panel-body">
+				  		교수님 메인화면 입니다.
+				  	</div>
+				</div>							
+			</div>
+		</div>
+		
+	</div>
+</div>
+	
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

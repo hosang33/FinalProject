@@ -1,0 +1,17 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class Scholarship {
+
+	private int no;
+	private int stuNo;
+	private String isPayment;
+	private int price;
+	private Date date;
+	private int semester;
+
+}

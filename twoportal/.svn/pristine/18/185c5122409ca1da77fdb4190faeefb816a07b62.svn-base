@@ -1,0 +1,19 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import kr.ac.twoportal.dto.DeptStudent;
+import kr.ac.twoportal.vo.Student;
+
+public interface StudentService {
+	void addOneStudent(Student student);
+
+	void addStudents(List<Student> students);
+	
+	List<Student> getAllStudent();
+	
+	Student getStudentByNo(int no);
+	
+	List<DeptStudent> getAllStudentByCri(Map<String, Object> criteria);
+}

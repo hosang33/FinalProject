@@ -1,0 +1,13 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class TuitionHistory {
+
+	private int no;
+	private int tuitionNo;
+	private int stuNo;
+	private Date date;
+	private String payWay;
+	
+}

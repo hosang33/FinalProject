@@ -1,0 +1,18 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+import lombok.Data;
+@Data
+public class Lecture {
+
+	private int no;
+	private int subjectNo;
+	private int proNo;
+	private Date createDate;
+	private int totalNumber;
+	private int room;
+	private String semester;
+	private String enabled;
+	private String cancelEnabled;
+}

@@ -1,0 +1,102 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2">
+		
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-10">
+			<div class="">
+				<label>학생정보</label>
+			</div>
+			
+			<div id="studentInfo">
+				<form>
+					<div class="form-group">
+						<label for="sel1">년도</label>
+	      				<select class="form-control" id="sel1">
+					        <option>2017</option>
+					        <option>2018</option>
+					        <option>2019</option>
+					        <option>2020</option>
+					     </select>					
+					</div>
+					<div class="form-group">
+				  	    <label for="usr">학과</label>
+				    	<input type="text" class="form-control" id="">
+				    </div>
+				    <div class="form-group">
+				    	<label for="sel1">학년</label>
+	      				<select class="form-control" id="sel1">
+					        <option>1</option>
+					        <option>2</option>
+					        <option>3</option>
+				 	        <option>4</option>
+					     </select>
+				    </div>	
+					<div class="form-group">
+				  	    <label for="">이름</label>
+				    	<input type="text" class="form-control" id="">
+				    </div>
+				    <div>
+				    	<button class="btn btn-primary pull-right">검색</button>
+				    </div>
+				</form>
+			</div>
+			
+			<div>
+				<table class="table table-bordered">
+				    <thead>
+				      <tr>
+				        <th>학번</th>
+				        <th>이름</th>
+				        <th>Email</th>
+				        <th>나이</th>
+				        <th>재학상태</th>
+				        <th>학년</th>
+				        <th>입학일자</th>
+				        <th>졸업일자</th>
+				        <th>주소</th>
+				        <th>휴대폰 번호</th>
+				        <th>은행</th>
+				        <th>계좌번호</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td>201309115</td>
+				        <td>John</td>
+				        <td>john@example.com</td>
+				        <td>26</td>
+				        <td>복학</td>
+				        <td>2</td>
+				        <td>2013.03.09</td>
+				        <td>-</td>
+				        <td>경기도 부천시 원미구 상동 한아름 아파트 1502동</td>
+				        <td>010-1111-1111</td>
+				        <td>국민</td>
+				        <td>63610201303983</td>
+				      </tr>
+				    </tbody>
+				 </table>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

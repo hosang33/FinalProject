@@ -1,0 +1,11 @@
+package kr.ac.twoportal.service;
+
+import kr.ac.twoportal.vo.LectureList;
+
+public interface DayCheckService {
+
+	boolean studentDayChecking(LectureList lectureList);
+
+	boolean dayCheckDuplicateCheck(int listNo);
+
+}

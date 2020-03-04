@@ -1,0 +1,26 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import kr.ac.twoportal.dto.RegisterListDto;
+import kr.ac.twoportal.dto.RegisteredCountDto;
+import kr.ac.twoportal.vo.LectureList;
+
+public interface LectureListService {
+
+	// JH : 수강신청화면에 뿌릴 자료 불러오기
+	List<RegisterListDto> getLectureListByMajorAndDeptNoAndYear(Map<String, Object> criteria);
+
+	// JH : 수강신청테이블에 강의1개 저장
+	void insertOneLecture(LectureList lectureList);
+
+	// JH : 학생번호로 수강신청List불러오기	
+	List<RegisterListDto> getLectureListByStuNo(int stuNo);
+	
+	// JH : 학생번호로 총신청과목,신청학점 불러오기
+	RegisteredCountDto getSubCountAndCreditCountByStuNo(int stuNo);
+	
+	// JH : 학생번호와 강의번호로 수강리스트에 있는 과목 한개 삭제하기
+	void deleteOneLecture(Map<String, Object> criteria);
+}

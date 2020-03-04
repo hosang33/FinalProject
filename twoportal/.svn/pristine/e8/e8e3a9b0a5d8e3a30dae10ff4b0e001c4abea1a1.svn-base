@@ -1,0 +1,19 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class Board {
+
+	private int no;
+	private int proNo;
+	private int staffNo;
+	private int stuNo;
+	private String guestNickname;
+	private String title;
+	private String content;
+	private Date createDate;
+	private String category;
+	private int viewCount;
+	private String pwd;
+	private String pwdIsInput;
+}

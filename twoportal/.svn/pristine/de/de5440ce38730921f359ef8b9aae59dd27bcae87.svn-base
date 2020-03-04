@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid"> 
+	<%@include file="../../common/navheader.jsp" %>  
+	<div class="row" >
+		<%@include file="../../common/navleft.jsp" %>
+		<div class="col-sm-10" >
+			<div class="page-header" style="margin-top: 0px;">
+				<h4>강의 조회</h4>
+			</div>
+			
+			<div class="row">   
+				<div class="col-sm-12">
+					<form class="form-inline" action="">
+						<div class="form-group">
+							<label>개설년도</label>  
+							<input type="text" class="form-contorl" name="year" placeholder="2020" >
+						</div>  
+						<div class="form-group">
+							<label>학기 </label>  
+							<select name="" class="form-control">
+								<option value="" selected> -- 전체 --</option>
+								<option value="1" > 1 학기</option>
+								<option value="2" > 2 학기</option>
+							</select>   
+						</div>    
+						<button type="button" class="btn btn-default" id="">조회</button>
+					</form>
+					<span class="pull-right">총 강의 조회수 : [ 1 ] 건 </span>  
+				</div>        
+			</div> 
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table" id="">
+						<thead>
+							<tr>
+								<th>순번</th>
+								<th>학년</th>
+								<th>과목명</th>
+								<th>이수구분</th>
+								<th>학점<th>        
+								<th>개설날짜</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+						 
+							<tr>  
+								<td>1</td>
+								<td>2학년</td>
+								<!-- ajax -->
+								<td><a>경영학개론</a></td>  
+								<td>전공</td>
+								<td>3</td>
+								<td>2020.01.23</td>
+								<td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lghModal">수강중인 학생</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div id="lghModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">  
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        		<h4 class="modal-title">수강중인 학생</h4>
+			      		</div>
+				      	<div class="modal-body">
+				        	<table class="table">
+				        		<thead>
+				        			<tr>
+				        				<th>이름</th>
+				        				<th>학번</th>
+				        				<th>학과</th>
+				        				<th>학년</th>
+				        				<th>핸드폰</th>
+				        				<th>이메일</th>
+				        			</tr>
+				        		</thead>
+				        		<tbody>
+				        			<tr>
+				        				<td>이건희</td>
+				        				<td>20201232</td>
+				        				<td>경영학과</td>
+				        				<td>2학년</td>
+				        				<td>010-1234-5678</td>
+				        				<td>erjsgml94@naver.com</td>
+				        			</tr>
+				        		</tbody>
+				        	</table>  
+				      	</div>
+			    	</div>
+			  	</div>    
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<h5>상세 내용</h5>
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table">
+								<tr>
+									<th>교과목</th>
+									<td>경영학개론</td>
+									<th>학점</th>
+									<td>3</td>
+									<th>강의실</th>
+									<td>101 호</td>
+									<th>신청자수</th>
+									<td>5 / 20</td>
+								</tr>
+								<tr>
+									<th>강의시간</th>
+									<td colspan="3">월 2,3 교시 / 수 1교시</td>
+									<th>수강대상</th>
+									<td colspan="3">경영학과 2학년</td>
+								</tr> 
+							</table>
+							
+							<h5>강의내용</h5>
+							<div class="well">경영에 대한 이해와...</div>
+						</div>
+					</div>
+				</div>    
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>평가요소</th>
+								<th>출석</th>
+								<th>시험</th>
+								<th>계</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>배점비율</td>
+								<td>30</td>
+								<td>70</td>
+								<td>100</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>   
+	</div>
+		
+	<script type="text/javascript">
+		$(function() {
+			$("#collapse1").addClass("in");
+		});
+	</script>
+</div>
+</body>
+</html>

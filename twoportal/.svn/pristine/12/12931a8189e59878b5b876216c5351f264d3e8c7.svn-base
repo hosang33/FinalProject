@@ -1,0 +1,10 @@
+package kr.ac.twoportal.vo;
+
+public class TestResult {
+
+	private int no;
+	private int stuNo;
+	private int infoNo;
+	private int score;
+	
+}

@@ -1,0 +1,311 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%@include file="../../common/navheader.jsp" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<%@include file="../../common/navleft.jsp" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-header">
+						<h2>수강신청 및 수정/삭제</h2>
+					</div>
+					<pre class="text-center"><strong>선택사항 선택 후 검색버튼을 누르세요.</strong></pre>
+					<form class="form-inline">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										<label class="radio-inline">
+											<input type="radio" name="ismajor" value="전체" id="major-and-minor" checked> 전체
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="ismajor" value="전공" id="major-radio"> 전공
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="ismajor" value="교양" id="minor-radio"> 교양
+										</label>
+									</th>
+									<th>학과선택</th>
+									<th>
+										<select name="dept" id="class-dept">
+											<option value="0"> -- 선택 -- </option>
+											<option value="11">경영학과</option>
+											<option value="12">생명공학과</option>
+											<option value="13">시각디자인학과</option>
+											<option value="14">컴퓨터공학과</option>
+											<option value="15">전자물리학과</option>
+										</select>
+									</th>
+									<th>학년선택</th>
+									<th>
+										<select name="year" id="class-year">
+											<option value="0"> -- 선택 -- </option>
+											<option value="1">1학년</option>
+											<option value="2">2학년</option>
+											<option value="3">3학년</option>
+											<option value="4">4학년</option>
+										</select>
+										<button type="button" class="btn btn-primary btn-xs pull-right" id="btn-search">검색</button>
+									</th>
+								</tr>
+							</thead>
+						</table>
+					</form>
+					
+					<form class="form-inline">
+						<table class="table table-bordered text-center" id="register-table">
+							<colgroup>
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="*%">
+								<col width="15%">
+								<col width="8%">
+								<col width="6%">
+								<col width="6%">
+								<col width="12%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="text-center">선택</th>
+									<th class="text-center">과목번호</th>
+									<th class="text-center">학과번호</th>
+									<th class="text-center">이수구분</th> 
+									<th class="text-center">학점</th>
+									<th class="text-center">강의명</th>
+									<th class="text-center">강의시간/강의실</th>
+									<th class="text-center">담당교수</th>
+									<th class="text-center">대상학년</th>
+									<th class="text-center">인원</th>
+									<th class="text-center">비고</th>
+									
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</form>
+					<hr>
+					<form class="form-inline">
+						<table class="table table-bordered text-center" id="result-table">
+							<colgroup>
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="5%">
+								<col width="*%">
+								<col width="15%">
+								<col width="8%">
+								<col width="6%">
+								<col width="6%">
+								<col width="12%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="text-center">선택</th>
+									<th class="text-center">과목번호</th>
+									<th class="text-center">학과번호</th>
+									<th class="text-center">이수구분</th>
+									<th class="text-center">학점</th>
+									<th class="text-center">강의명</th>
+									<th class="text-center">강의시간/강의실</th>
+									<th class="text-center">담당교수</th>
+									<th class="text-center">대상학년</th>
+									<th class="text-center">인원</th>
+									<th class="text-center">비고</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-danger btn-xs text-center">DELETE</button>
+									</td>
+									<td>[A040]</td>
+									<td>P010001</td>
+									<td>전공</td>
+									<td>3</td>
+									<td>생명공학의 미래</td>
+									<td>탐구관506 수 4~6</td>
+									<td>박지윤</td>
+									<td>1</td>
+									<td>30/40</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-danger btn-xs text-center">DELETE</button>
+									</td>
+									<td>[A040]</td>
+									<td>P010731</td>
+									<td>교양</td>
+									<td>2</td>
+									<td>영국문학과 문화1</td>
+									<td>상상관 307 금 1~2</td>
+									<td>황정현</td>
+									<td>2</td>
+									<td>1/40</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-danger btn-xs text-center">DELETE</button>
+									</td>
+									<td>[D132]</td>
+									<td>P052401</td>
+									<td>교양</td>
+									<td>2</td>
+									<td>경제수학</td>
+									<td>상상관707 화 8~9</td>
+									<td>이천우</td>
+									<td>1</td>
+									<td>7/40</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-danger btn-xs text-center">DELETE</button>
+									</td>
+									<td>[D132]</td>
+									<td>J101001</td>
+									<td>전공</td>
+									<td>3</td>
+									<td>경제원론2(거시경제기초)</td>
+									<td>탐구관307 목 4~6</td>
+									<td>김정렬</td>
+									<td>4</td>
+									<td>18/40</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					
+					<!-- 모달창 -->
+					<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel"><strong>수강신청 재확인</strong></h4>
+								</div>
+								<div class="modal-body">
+									<table class="table table-bordered text-center">
+										<thead>
+											<tr>
+												<th colspan="2" class="text-center info"><strong>[경영학과]</strong></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><strong>과목번호</strong></td>
+												<td>88888</td>
+											</tr>
+											<tr>
+												<td><strong>강의명</strong></td>
+												<td>경영학개론</td>
+											</tr>
+											<tr>
+												<td><strong>담당교수</strong></td>
+												<td>김교수</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="row text-center">
+										<h4><strong>위의 사항을 모두 확인하고 수강신청 합니다.</strong></h4>
+									</div>			
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+									<button type="button" class="btn btn-danger">신청하기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+						
+					<div class="panel panel-danger">
+						<div class="panel-heading text-center">
+							<strong>신청과목수 : </strong> 3과목 <strong>신청학점  : </strong> 7학점<strong>(재수강)신청학점 : </strong> 0학점 <strong>(재수강)가능학점 : </strong> 12학점
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	// 검색버튼 클릭
+	$("#btn-search").click(function(event) {
+		event.preventDefault();
+	
+		var dept = $("#class-dept").val();
+		
+		if (dept == 0) {
+			alert("학과를 선택하세요.");
+			return;
+		}
+	
+		var year = $("#class-year").val();
+		
+		if (year == 0) {
+			alert("학년을 선택하세요.");
+			return;
+		}
+		
+		var $tbody = $("#register-table tbody").empty();
+		  
+		var dept = $("#class-dept").val();
+		var year = $("#class-year").val();
+		var ismajor = $("input:radio[name='ismajor']:checked").val();
+		
+		// console.log(year);
+		// console.log(dept);
+		// console.log(ismajor);
+		
+		$.getJSON("/student/class/registerList.hta", {dept:dept, year:year, ismajor:ismajor}, function(result) {
+			
+			console.log("결과",result);
+			
+			var row = "";  
+			if (result.length == 0) {    
+				row += "<tr>";
+				row += "<td colspan='11' class='text-center'><strong>해당 조건의 검색 결과가 없습니다.</strong></td>";
+				row += "</tr>";
+			} else {
+				$.each(result, function(index, item) {
+					row += "<tr>";
+					row += "<td><button type='button' class='btn btn-success btn-xs text-center' data-toggle='modal' data-target='#registerModal'>REGISTER</button></td>";
+					row += "<td>" + '[' + item.no + ']' + "</td>";   
+					row += "<td>" + item.deptNo + "</td>";   
+					row += "<td>" + item.major + "</td>";
+					row += "<td>" + item.credit + "</td>";
+					row += "<td>" + item.subName + "</td>";
+					row += "<td>" + item.place + item.room + '호' + "</td>";
+					row += "<td>" + item.proName + "</td>";
+					row += "<td>" + item.targetYear + "</td>";
+					row += "<td>" + item.totalNumber + "</td>";
+					row += "<td></td>";
+					row += "</tr>";
+				});  
+			};  
+			$tbody.append(row);
+		});
+	});  
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style type="text/css"> 
+
+  </style>
+</head>
+<body>
+<div class="container-fluid" id="professor"> 
+<%@include file="../../common/navheader.jsp" %>
+<div class="row" >
+	<div class="col-sm-2">
+		<%@include file="../../common/navleft.jsp"%>		
+	</div>
+	<div class="col-sm-10">
+		<div class="" style="margin-bottom:30px;">
+			<label>교수정보</label>
+		</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<form class="form-inline">
+						<div class="form-group" id="">
+							<label for="sel1">직급</label> <select name="" v-model="param.position"
+								class="form-control" id="professor-position">
+								<option value="" selected="selected">-- 전체 --</option>
+								<option value="교수">교수</option>
+								<option value="부교수">부교수</option>
+							</select>
+						</div>
+						<div class="form-group" id="">
+							<label for="sel1">학과</label> 
+							<select name="" v-model="param.deptNo" class="form-control" id="professor-dept">
+								<option value="" selected="selected" >-- 선택 --</option>
+								<c:forEach var="department" items="${listDept}">
+									<option value="${department.no}">${department.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group" class="form-control" >
+							<label for="sel1">이름</label> 
+							<input type="text" v-model="param.proName"
+								class="form-control" id="professor-name" v-on:keydown.enter.prevent='searchProfessor()'>
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary pull-right" id="btn-get" @click="smallJson()">검색</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		
+		<div style="margin-top:70px;">
+			<table class="table table-bordered" id="professor-table">
+				<colgroup>
+							<col width="4%" />
+							<col width="12%" />
+							<col width="12%" />
+							<col width="20%" />
+							<col width="12%" />
+							<col width="15%" />
+							<col width="*%" />
+						</colgroup>
+			    <thead>
+			      <tr>
+			        <th><input type="checkbox"></th>
+			        <th>아이디</th>
+			        <th>이름</th>
+			        <th>Email</th>
+			        <th>직급</th>
+			        <th>학과</th>
+			        <th></th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    	<tr v-if="professors.length == 0">
+			    		<td colspan="9" class="text-center">조회된 결과가 없습니다.</td>
+			    	</tr>	
+				    <tr v-for="pro in professors">
+				       <td><input type="checkbox"></td>
+				       <td>{{pro.id}}</td>
+				       <td>{{pro.name}}</td>
+				       <td>{{pro.email}}</td>
+				       <td>{{pro.position}}</td>
+				       <td>{{pro.deptName}}</td>
+				       <td><button class="btn btn-primary">상세보기</button></td>
+				    </tr>
+			    </tbody>
+
+			 </table>
+			<ul class='btn-group pagination' id="pageBtn">
+					<li v-if="pageInfo.prev">
+	    				<a id="prevPage">
+	    				<i class='fa fa-chevron-left glyphicon glyphicon-chevron-left'></i></a>
+					</li>
+					<li v-for="number in pageInfo.endPage" id="pageNumberOn">
+						<a @click="pageChange(number)" id="pageNumber" >{{number}}</a>
+					</li>		
+					<li v-if="pageInfo.next && pageInfo.endPage > 0">
+						<a id="nextPage">
+						<i class='fa fa-chevron-left glyphicon glyphicon-chevron-right'></i></a>
+					</li>
+			  </ul>	
+		</div>
+	</div>
+</div>
+
+
+</div>
+	<script type="text/javascript">
+	
+		var getProfessor = new Vue({
+			el : "#professor",
+			data : {
+				professors:[],
+				pageInfo:{},
+				param : {
+					page:'',
+					deptNo:'',
+					position:'',
+					proName:''
+				}
+			},
+			methods :{
+				pageChange: function(number) {
+					console.log(number);	
+					getProfessor.smallJson(number);
+				},
+				smallJson: function(number) {
+					
+					if(number ==''){
+						number =1 ;
+					}
+					$.ajax({
+						url:"/staff/professorInfoCri.hta",
+						type : 'get',
+						data : {
+							page : number,
+							deptNo: getProfessor.param.deptNo,
+							position : getProfessor.param.position,
+							proName : getProfessor.param.proName
+						},
+						success : function(result) {
+							console.log(result);
+							getProfessor.professors = result.list;	
+							getProfessor.pageInfo = result.pageInfo;	
+
+						}
+					})
+				}
+			}
+		});
+
+		$(document).ready(function(){
+			getProfessor.smallJson();
+		})
+		
+		
+	</script>
+</body>
+</html>

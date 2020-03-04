@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+<%@include file="../common/navheader.jsp" %>
+<%@include file="../common/navleft.jsp" %>
+	<div class="page-header">
+		<h1>임시 메인화면</h1>
+	</div>
+	<a class="btn btn-default" href="../class/registerAndModify.hta" role="button">수강신청 장바구니</a>
+	<a class="btn btn-default" href="#" role="button">수강신청 내역</a>
+</div>
+
+<div class="col-sm-6">
+			<div class="page-header">
+				<h2>수강신청 장바구니</h2>
+			</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>공지사항</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<p>수강신청기간 : </p>
+							<p> 1. 수강신청 장바구니 시행 기간 : 2020년 1월 1일(수) ~ 2020년 1월 일(금) [3일간 10:00~17:00까지]</p>
+							<p> 2. 수강신청 장바구니 대상 : 2020학년도 1학기 재학생 대상 (2020학년도 1학기 복학예정자 포함)</p>
+							<p> 3. 수강신청 장바구니 가능 학점 : 16학번 이후 21학점, 15학번 이전 23학점 (3학점 초과 반영)</p>
+							<p> 4. 수업 시간 중복 허용, 주.야 교차 수강 불허</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<form class="form-inline">
+				<table class="table table-bordered">
+					<colgroup>
+						<col width="15%">
+						<col width="10%">
+						<col width="*">
+						<col width="10%">
+						<col width="20%">
+					</colgroup>
+					<thead>
+						<tr class="text-center">
+							<th> 
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 전공
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 교양
+								</label>
+							</th>
+							<th>학과선택</th>
+							<th>
+								<select>
+									<option>경영학과</option>
+									<option>생명공학과</option>
+									<option>시각디자인학과</option>
+									<option>컴퓨터공학과</option>
+									<option>전자물리학과</option>
+								</select>
+							</th>
+							<th>학년선택</th>
+							<th>
+								<select>
+									<option>1학년</option>
+									<option>2학년</option>
+									<option>3학년</option>
+									<option>4학년</option>
+								</select>
+							</th>
+						</tr>
+					</thead>
+				</table>
+			
+			</form>
+			
+			
+			
+		</div>
+</body>
+</html>

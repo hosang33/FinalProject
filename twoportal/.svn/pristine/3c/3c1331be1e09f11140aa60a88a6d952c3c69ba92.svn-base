@@ -1,0 +1,104 @@
+package kr.ac.twoportal.web.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.ac.twoportal.service.BoardService;
+import kr.ac.twoportal.service.MailService;
+import kr.ac.twoportal.service.StudentService;
+import kr.ac.twoportal.vo.Board;
+import kr.ac.twoportal.vo.Student;
+
+@Controller
+public class StaffController {
+	
+	@Autowired
+	private BoardService boardService;
+	@Autowired
+	private StudentService studentService;
+	@Autowired
+	private MailService	mailService;
+	
+	/*
+	//교직원 메인 페이지 (휴강신청, 게시판 )
+	@GetMapping("/staff/home.hta")
+	public String staffHome() {
+		return "staff/home";
+	}
+	*/
+	@GetMapping("/staff/home.hta")
+	public ModelAndView staffHome() throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/staff/home");
+		List<Board> list = boardService.selectBoardListNotP();
+		mav.addObject("homeList",list);
+		
+		return mav;
+	}
+
+	
+	//교직원에 학생 정보 추가 
+	@GetMapping("/staff/studentAddInfo.hta")
+	public String staffAddStudent(Model model) {
+		
+		return "staff/students/studentAddInfo";
+	}
+	
+	@PostMapping("/staff/addStudent.hta")
+	public String addOneStudent (Student student)throws Exception {
+		String pwd = RandomStringUtils.randomAlphanumeric(6);
+		student.setPwd(pwd);
+		
+		mailService.sendEmail(student);
+		studentService.addOneStudent(student);
+		return "redirect:/staff/studentAddInfo.hta"; 
+	}
+	
+	//교직원에 학생 정보 보기
+	@GetMapping("/staff/studentInfo.hta")
+	public String staffselectStudent() {
+		return "staff/students/studentInfo";
+	}
+	
+	//교직원에 교수 추가
+	@GetMapping("/staff/professorAddInfo.hta")
+	public String staffAddProfessor() {
+		return "staff/professors/professorAddInfo";
+	}
+	
+	//교직원에 교수 정보 보기
+	@GetMapping("/staff/professorInfo.hta")
+	public String staffselectProfessor() {
+		return "staff/professors/professorInfo";
+	}
+	
+	@GetMapping("/staff/salary.hta")
+	//교직원에서 교수 월급주기
+	public String staffPayaSalary() {
+		return "staff/budget/salary";
+	}
+	
+	
+	@GetMapping("/staff/scholarship.hta")
+	//교직원에서 학생 장학금주기
+	public String staffPayaScholarship() {
+		return "staff/budget/scholarship";
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package kr.ac.twoportal.vo;
+
+public class GradeResult {
+
+	private int no;
+	private int lectureListNo;
+	private int score;
+	private String rating;
+	private int rank;
+	private double finalScore;
+}

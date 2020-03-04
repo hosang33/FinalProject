@@ -1,0 +1,11 @@
+package kr.ac.twoportal.service;
+
+import kr.ac.twoportal.vo.MainCategory;
+
+public interface MainCateService {
+	
+	int[] getMainNosByJob(String job);
+
+	MainCategory getMainCateByNo(int mainNo);
+
+}

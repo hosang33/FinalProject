@@ -1,0 +1,11 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.Subject;
+
+public interface SubjectDao {
+
+	Subject getSubjectByNo(int subjectNo);
+	
+	void insertSubject(Subject subject);
+
+}

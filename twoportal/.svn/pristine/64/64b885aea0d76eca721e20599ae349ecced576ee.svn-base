@@ -1,0 +1,193 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<%@include file="../../common/navheader.jsp"%>
+		<div class="row">
+			<div class="col-sm-2">
+				<%@include file="../../common/navleft.jsp"%>		
+			</div>
+			<div class="col-sm-10">
+				<div class="page-header" style="margin-top: 0px;">
+					<h4>학생정보</h4>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<form class="form-inline">
+							<div class="form-group" id="year">
+								<label for="sel1">입학년도 :</label> <input type="text"
+									class="form-control" name="year" id="student-year"
+									maxlength="4">
+							</div>
+							<div class="form-group" id="year">
+								<label for="sel1">학과</label> <select name="departmentNo"
+									class="form-control" id="student-dept">
+									<option value="0" selected="selected">-- 전체 --</option>
+									<option value="11">경영학과</option>
+									<option value="12">생명공학과</option>
+									<option value="13">시각디자인학과</option>
+									<option value="14">컴퓨터공학과</option>
+									<option value="15">전자물리학과</option>
+									<option value="16">조소과</option>
+								</select>
+							</div>
+							<div class="form-group" id="year">
+								<label for="sel1">학년</label> <select name="grade"
+									class="form-control" id="student-grade">
+									<option value="0" selected="selected">-- 전체 --</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</div>
+							<div class="form-group" class="form-control">
+								<label for="sel1">이름</label> <input type="text"
+									name="studentName" class="form-control" id="student-name">
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary pull-right" id="btn-get">검색</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+				<div class="row" style="margin-top: 70px;">
+					<div class="col-sm-12">
+						<table class="table table-bordered" id="student-table">
+							<thead>
+								<tr>
+									<th><input type="checkbox"></th>
+									<th>이름</th>
+									<th>학번</th>
+									<th>Email</th>
+									<th>학과</th>
+									<th>재학상태</th>
+									<th>학년</th>
+									<th>휴대폰 번호</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div id="stuModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">수강 학생</h4>
+							</div>
+							<div class="modal-body">
+								<table class="table" id="student-table">
+									<thead>
+										<tr>
+											<th>이름</th>
+											<th>학번</th>
+											<th>학과</th>
+											<th>학년</th>
+											<th>핸드폰</th>
+											<th>이메일</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+									<div id="pageinfo-table">
+									
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</body>
+
+
+<script type="text/javascript">
+			
+	function searchStudent(year, departmentNo, grade, studentName) {
+		$.getJSON("/staff/studentInfoCri.hta", {year:year, departmentNo:departmentNo, grade:grade, studentName:studentName}, function(result){
+			
+			var row= "";
+			var page= "";
+			if(result.list.length == 0){      
+				row += "<tr>";
+				row += "<td colspan='9' class='text-center'>조회된 강의가 없습니다.</td>";
+				row += "</tr>";
+			} else {
+				
+				$.each(result.list, function(index, stu){
+					row += "<tr>";
+					row += "<td><input type='checkbox'/></td>";
+					row += "<td>"+stu.name+"</td>";
+					row += "<td>"+stu.id+"</td>";
+					row += "<td>"+stu.email+"</td>";
+					row += "<td>"+stu.deptName+"</td>";
+					row += "<td>"+stu.status+"</td>";
+					row += "<td>"+stu.grade+"</td>";
+					row += "<td>"+stu.phone+"</td>";
+					row += "<td><button type='button' class='btn btn-info btn-xs' data-toggle='modal' data-lect-no="+stu.no+" data-target='#stuModal'>상세 정보</button></td>";
+					row += "</tr>";
+					
+				});	
+				
+			};
+			$("#student-table").append(row);
+		});
+	}
+		
+	//년도,학과, 학년 , 이름을 검색했을 때 나옴
+		$("#btn-get").click(function(event){
+			event.preventDefault();
+			
+			var year = $("#student-year").val();
+			
+			if(!year){
+				alert("년도를 입력해주세요");
+				$("#student-year").focus();
+				return;
+			}
+			
+			var $tbody = $("#student-table tbody").empty();
+			
+			var year = $("#student-year").val();
+			var departmentNo = $("#student-dept").val();
+			var grade = $("#student-grade").val();
+			var studentName = $("#student-name").val();
+			
+			console.log(departmentNo);
+			searchStudent(year, departmentNo, grade, studentName);
+		});
+	
+		//날짜가 숫자로만 사용할수 있게끔 
+		$("#lecture-year").on("keyup", function() {
+			$(this).val($(this).val().replace(/[^0-9]/g,""));
+		});
+		
+		searchStudent();
+</script>
+
+</html>

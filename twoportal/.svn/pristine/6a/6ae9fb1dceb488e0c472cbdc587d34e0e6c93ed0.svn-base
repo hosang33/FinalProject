@@ -1,0 +1,46 @@
+package kr.ac.twoportal.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.ac.twoportal.service.ClassService;
+
+@Controller
+@RequestMapping("/student/class")
+public class ClassController {
+	
+	@Autowired
+	private ClassService classService;
+	
+	@GetMapping("/register.hta")
+	public String register() {
+		
+		return "student/class/register";
+	}
+	
+	@GetMapping("/registerCart.hta")
+	public String registerCart() {
+		
+		return "student/class/registerCart";
+	}
+	
+	@GetMapping("/registeredTable.hta")
+	public String registeredTable() {
+		
+		return "student/class/registeredTable";
+	}
+	
+	@GetMapping("/personalTimeTable.hta")
+	public String personalTimeTable() {
+		
+		return "student/class/personalTimeTable";
+	}
+	
+	@GetMapping("/schoolTimeTable.hta")
+	public String schoolTimeTable() {
+		
+		return "student/class/schoolTimeTable";
+	}
+}

@@ -1,0 +1,507 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%@include file="../../common/navheader.jsp" %>
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-2">
+		<%@include file="../../common/navleft.jsp" %>
+	</div>
+		<div class="col-sm-10">
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="page-header">
+						<h2>수강신청 장바구니 담기</h2>
+					</div>	
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">
+								<strong>필독공지사항</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<p> 1. 수강신청 장바구니 시행 기간 : [2020년] 1월 1일(수) ~ 1월 일(금) [3일간 10:00~17:00까지]</p>
+							<p> 2. 수강신청 장바구니 대상 : 2020학년도 1학기 재학생 대상 (2020학년도 1학기 복학예정자 포함)</p>
+							<p> 3. 수강신청 장바구니 가능 학점 : 16학번 이후 21학점, 15학번 이전 23학점 (3학점 초과 반영)</p>
+							<p> 4. 수업 시간 중복 허용, 주.야 교차 수강 불허</p>
+						</div>
+					</div>
+					<form class="form-inline">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 전공
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 교양
+										</label>
+									</th>
+									<th>학과선택</th>
+									<th>
+										<select>
+											<option>경영학과</option>
+											<option>생명공학과</option>
+											<option>시각디자인학과</option>
+											<option>컴퓨터공학과</option>
+											<option>전자물리학과</option>
+										</select>
+									</th>
+									<th>학년선택</th>
+									<th>
+										<select>
+											<option>1학년</option>
+											<option>2학년</option>
+											<option>3학년</option>
+											<option>4학년</option>
+										</select>
+										<button type="button" class="btn btn-primary btn-xs pull-right">검색</button>
+									</th>
+								</tr>
+							</thead>
+						</table>
+					</form>
+					<form class="form-inline">
+						<table class="table table-bordered">
+							<colgroup>
+								<col width="8%">
+								<col width="8%">
+								<col width="*%">
+								<col width="15%">
+								<col width="8%">
+								<col width="10%"> 
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="text-center">선택</th>
+									<th class="text-center">이수</th>
+									<th class="text-center">강의명</th>
+									<th class="text-center">담당교수</th>
+									<th class="text-center">학점</th>
+									<th class="text-center">인원</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-primary btn-xs text-center">담기</button>
+									</td>
+									<td class="text-center">전공</td>
+									<td class="text-center">생명공학의 미래</td>
+									<td class="text-center">박지윤</td>
+									<td class="text-center">3</td>
+									<td class="text-center">30/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-primary btn-xs text-center">담기</button>
+									</td>
+									<td class="text-center">교양</td>
+									<td class="text-center">영국문학과 문화1</td>
+									<td class="text-center">황정현</td>
+									<td class="text-center">2</td>
+									<td class="text-center">1/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-primary btn-xs text-center">담기</button>
+									</td>
+									<td class="text-center">교양</td>
+									<td class="text-center">경제수학</td>
+									<td class="text-center">이천우</td>
+									<td class="text-center">2</td>
+									<td class="text-center">7/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-primary btn-xs text-center">담기</button>
+									</td>
+									<td class="text-center">전공</td>
+									<td class="text-center">경제원론2(거시경제기초)</td>
+									<td class="text-center">김정렬</td>
+									<td class="text-center">3</td>
+									<td class="text-center">18/40</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<div class="page-header">
+						<h3>나의 장바구니</h3>
+					</div>	
+					<div class="panel panel-default">
+						<div class="panel-heading text-center">
+							<strong>신청과목수 : </strong> 3과목 <strong>신청학점  : </strong> 7학점<strong>(재수강)신청학점 : </strong> 0학점
+						</div>
+					</div>						
+					<form class="form-inline">
+						<table class="table table-bordered">
+							<colgroup>
+								<col width="8%">
+								<col width="8%">
+								<col width="*%">
+								<col width="15%">
+								<col width="8%">
+								<col width="10%"> 
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="text-center">선택</th>
+									<th class="text-center">이수</th>
+									<th class="text-center">강의명</th>
+									<th class="text-center">담당교수</th>
+									<th class="text-center">학점</th>
+									<th class="text-center">인원</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-danger btn-xs text-center">삭제</button>
+									</td>
+									<td class="text-center">전공</td>
+									<td class="text-center">생명공학의 미래</td>
+									<td class="text-center">박지윤</td>
+									<td class="text-center">3</td>
+									<td class="text-center">30/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-danger btn-xs text-center">삭제</button>
+									</td>
+									<td class="text-center">교양</td>
+									<td class="text-center">영국문학과 문화1</td>
+									<td class="text-center">황정현</td>
+									<td class="text-center">2</td>
+									<td class="text-center">1/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-danger btn-xs text-center">삭제</button>
+									</td>
+									<td class="text-center">교양</td>
+									<td class="text-center">경제수학</td>
+									<td class="text-center">이천우</td>
+									<td class="text-center">2</td>
+									<td class="text-center">7/40</td>
+								</tr>
+								<tr>
+									<td class="text-center">
+										<button type="button" class="btn btn-danger btn-xs text-center">삭제</button>
+									</td>
+									<td class="text-center">전공</td>
+									<td class="text-center">경제원론2(거시경제기초)</td>
+									<td class="text-center">김정렬</td>
+									<td class="text-center">3</td>
+									<td class="text-center">18/40</td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="button" class="btn btn-danger btn-block text-center">바 로 신 청</button>
+					</form>
+				</div>
+				<div class="col-sm-7">
+					<div class="page-header">
+						<h2>장바구니 시간표 출력 부분</h2>
+					</div>
+					<table class="table table-bordered" style="text-align: center;">
+						<colgroup>
+							<col width="8%">
+						</colgroup>
+						<tr> 
+							<th class="text-center">구분</th>
+							<th class="text-center">월</th>
+							<th class="text-center">화</th>
+							<th class="text-center">수</th>
+							<th class="text-center">목</th>
+							<th class="text-center">금</th>
+							<th class="text-center">토</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+							<td>
+								<p>test</p>
+								<p>test</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

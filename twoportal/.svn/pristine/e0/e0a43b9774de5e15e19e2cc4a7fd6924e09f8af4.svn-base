@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.TuitionDao">
+
+<insert id="insertTuition" parameterType="Tuition">
+	insert into school_tuitions(
+		dept_no,	
+		tuition_price,	
+		tuition_quarter,	
+		tuition_year,	
+		tuition_pay_start_date,
+		tuition_pay_end_date,
+		tuition_is_close)
+	value
+		(#{deptNo},#{price},#{quarter},YEAR(now()),#{payStartDate},#{payEndDate},'N')
+</insert>
+
+	<select id="getTuitionByNo" parameterType="int" resultType="Tuition">
+		select 
+			tuition_no				no,
+			dept_no					deptNo,
+			tuition_price			price,
+			tuition_quarter			quarter,
+			tuition_year			year,
+			tuition_pay_start_date	payStartDate,
+			tuition_pay_end_date	payEndDate,
+			tuition_is_close		isClose
+		from
+			school_tuitions
+		where
+			tuition_no = #{value}
+	</select>
+	
+	<select id="getTutionDuplicateCheck" parameterType="Tuition" resultType="Tuition">
+		select 
+			tuition_no				no,
+			dept_no					deptNo,
+			tuition_price			price,
+			tuition_quarter			quarter,
+			tuition_year			year,
+			tuition_pay_start_date	payStartDate,
+			tuition_pay_end_date	payEndDate,
+			tuition_is_close		isClose
+		from
+			school_tuitions
+		where
+			dept_no = #{deptNo}
+		AND
+			tuition_quarter = #{quarter}
+		AND
+			tuition_year = YEAR(now())
+	</select>
+</mapper>

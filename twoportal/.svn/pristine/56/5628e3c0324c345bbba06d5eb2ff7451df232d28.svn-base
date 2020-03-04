@@ -1,0 +1,65 @@
+package kr.ac.twoportal.web.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.ac.twoportal.service.BoardService;
+import kr.ac.twoportal.vo.Board;
+
+@Controller
+public class StaffController {
+	
+	@Autowired
+	private BoardService boardService;
+	/*
+	//교직원 메인 페이지 (휴강신청, 게시판 )
+	@GetMapping("/staff/home.hta")
+	public String staffHome() {
+		return "staff/home";
+	}
+	*/
+	@GetMapping("/staff/home.hta")
+	public ModelAndView staffHome() throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/staff/home");
+		List<Board> list = boardService.selectBoardListNotP();
+		mav.addObject("homeList",list);
+		
+		return mav;
+	}
+
+	//교직원에 학생 정보 추가 
+	@GetMapping("/staff/studentAddInfo.hta")
+	public String staffAddStudent() {
+		
+		
+		return "staff/students/studentAddInfo";
+	}
+	
+	//교직원에 학생 정보 보기
+	@GetMapping("/staff/studentInfo.hta")
+	public String staffselectStudent() {
+		return "staff/students/studentInfo";
+	}
+	
+	//교직원에 교수 추가
+	@GetMapping("/staff/professorAddInfo.hta")
+	public String staffAddProfessor() {
+		return "staff/professors/professorAddInfo";
+	}
+	
+	//교직원에 교수 정보 보기
+	@GetMapping("/staff/professorInfo.hta")
+	public String staffselectProfessor() {
+		return "staff/professors/professorInfo";
+	}
+	
+	
+	
+	
+}

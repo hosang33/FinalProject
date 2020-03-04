@@ -1,0 +1,140 @@
+package kr.ac.twoportal.web.controller;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.ac.twoportal.dto.LectureListDto;
+import kr.ac.twoportal.dto.LoginInfo;
+import kr.ac.twoportal.form.LectureAddForm;
+import kr.ac.twoportal.service.DepartmentService;
+import kr.ac.twoportal.service.LectureService;
+import kr.ac.twoportal.service.LectureTimeService;
+import kr.ac.twoportal.service.LectureAddService;
+import kr.ac.twoportal.utils.DateUtils;
+import kr.ac.twoportal.vo.Department;
+import kr.ac.twoportal.vo.LectureTime;
+
+@Controller
+@RequestMapping("/professor/lecture")
+public class LectureController {
+
+	@Autowired
+	private LectureService lectureService;
+	@Autowired
+	private LectureTimeService lectureTimeService;
+	@Autowired
+	private LectureAddService lectureAddService;
+	@Autowired
+	private DepartmentService departmentService;
+	
+	/////////////////////////개설신청/조회//////////////////////////
+	@PostMapping("/addlecture.hta")
+	public String applylist(LectureAddForm form, HttpSession session) throws Exception {
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		lectureAddService.addLecture(form, pro.getProfessor().getNo());
+		
+		return "redirect:/professor/lecture/applylist.hta"; 
+	}  
+	
+	@GetMapping("/applylist.hta")
+	public String applylist(Model model, HttpSession session) {
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		List<LectureListDto> lectures = lectureService.getAllLectureapplyByProNo(pro.getProfessor().getNo());
+		List<Department> departments = departmentService.getAllDepartment();
+		
+		model.addAttribute("lectures",lectures);
+		model.addAttribute("departments", departments);
+		
+		return "professor/lecture/applylist"; 
+	}  
+	
+	@GetMapping("/apply.hta")
+	@ResponseBody
+	public List<LectureTime> apply(HttpSession session, @RequestParam(value="place", required = false) String place,
+								  			 			@RequestParam(value="room", required = false, defaultValue = "0") int room,
+								  			 			@RequestParam(value="day", required = false, defaultValue = "0") String day) {
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		Map<String, Object> criteria = new HashMap<String, Object>();
+		
+		criteria.put("place", place);
+		criteria.put("room", room);
+		criteria.put("day", day);
+		
+		List<LectureTime> lectures = lectureTimeService.getLectureByPlaceandRoom(criteria);
+		  System.out.println(lectures);
+		return lectures; 
+	}  
+	
+	 ///////////////강의조회///////////////////////////////////////////////////////////
+	@GetMapping("/list.hta")  
+	public String list() {
+		return "professor/lecture/list"; 
+	}  
+	
+	@GetMapping("/listcri.hta")
+	@ResponseBody
+	public List<LectureListDto> listcri(@RequestParam(value="year", required = false) String year,
+										@RequestParam(value="semester", required = false, defaultValue = "0") int semester,
+										@RequestParam(value="pageno", required = false, defaultValue = "1") int pageNo,
+										HttpSession session) {
+		Map<String, Object> criteria = new HashMap<String, Object>();
+		
+		Date date = new Date();
+		if (year == null) {
+			year = DateUtils.getYear(date);
+		}
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		System.out.println("년도" + year);
+		System.out.println("학기" + semester);
+				
+		criteria.put("year", year);
+		criteria.put("semester", semester);
+		criteria.put("proNo", pro.getProfessor().getNo());
+		
+		List<LectureListDto> lectures = lectureService.getAllLectureBycri(criteria);
+		System.out.println("렉쳐" + lectures.toString());
+		return lectures;  
+	}     
+	
+	@GetMapping("/detail.hta")  
+	@ResponseBody  
+	public LectureListDto detail(@RequestParam("lectno") int lectNo) {
+		LectureListDto lecture = lectureService.getLectureByLectNo(lectNo);
+		System.out.println(lecture.toString());
+		  
+		return lecture;  
+	}
+	
+	@GetMapping("/stuLectList.hta")  
+	@ResponseBody  
+	public List<LectureListDto> stuLectList(@RequestParam("lectno") int lectNo) {
+		List<LectureListDto> lectures = lectureService.getStudentLectureListByLectNo(lectNo);
+		System.out.println("학생 " + lectures.toString());
+		     
+		return lectures;
+	}
+
+	
+}
+  

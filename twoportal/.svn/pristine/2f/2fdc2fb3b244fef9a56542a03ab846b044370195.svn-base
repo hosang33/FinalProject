@@ -1,0 +1,20 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.activation.CommandMap;
+
+import kr.ac.twoportal.vo.Board;
+import kr.ac.twoportal.vo.Criteria;
+
+public interface BoardDao {
+	 //List<Board> selectBoardList ();
+
+	 List<Board> selectBoardList (Criteria cri);
+
+	//총 게시글 개수 구하기
+	 int countBoardList();
+	 
+	 List<Board> selectBoardListNotP ();
+}

@@ -1,0 +1,17 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import kr.ac.twoportal.dto.LectureListDto;
+
+public interface LectureDao {
+
+	List<LectureListDto> getAllLectureByProNo(Map<String, Object> criteria);
+
+	LectureListDto getLectureByLectNo(int lectNo);
+	
+	List<LectureListDto> getStudentLectureListByLectNo(int lectNo);
+	
+	List<LectureListDto> getAllLectureapplyByProNo(int proNo);
+}

@@ -1,0 +1,38 @@
+package kr.ac.twoportal.web.advice;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class DayCheckControllerAdvice  extends HttpServlet{
+	
+	@RequestMapping("/professor/navHeader/dayCheck.hta")
+	public void dayCheckedStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/event-stream"); 
+		System.out.println("반복시작전");
+		response.setCharacterEncoding("UTF-8"); 
+		PrintWriter writer = response.getWriter();
+		for(int i = 1; i <= 10; i++) {
+			System.out.println("반복중");
+			writer.write("data: { \"message\" : \"number : "+ i + "\" }\n\n");
+			try {
+				Thread.sleep(1000);
+			} 
+			catch (InterruptedException e) { 
+				e.printStackTrace(); 
+			}
+		} 
+		
+		writer.close();
+
+	}
+
+}

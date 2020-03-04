@@ -1,0 +1,11 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.Professor;
+
+public interface ProfessorDao {
+
+	 Professor getProFessorById(String id);
+
+	Professor getProFessorByNo(int proNo);
+
+}

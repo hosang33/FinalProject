@@ -1,0 +1,14 @@
+package kr.ac.twoportal.vo;
+
+import lombok.Data;
+
+@Data
+public class LectureTime {
+
+	private int no;
+	private String day;
+	private int firstPeriod;
+	private int secondPeriod;
+	private int thirdPeriod;
+	
+}

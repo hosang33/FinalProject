@@ -1,0 +1,12 @@
+package kr.ac.twoportal.service;
+
+
+import java.util.Map;
+
+import kr.ac.twoportal.vo.Student;
+
+
+public interface MailService {
+
+	void sendEmail(Student student);
+}

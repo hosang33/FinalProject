@@ -1,0 +1,11 @@
+package kr.ac.twoportal.service;
+
+import java.util.Map;
+
+import kr.ac.twoportal.vo.LectureTime;
+
+public interface LectureTimeService {
+
+	LectureTime getLectureTimeOnlyOne(Map<String, Object> map);
+
+}

@@ -1,0 +1,11 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.MainCategory;
+
+public interface MainCategoryDao {
+
+	int[] getMainNosByJob(String job);
+
+	MainCategory getMainCateByNo(int mainNo);
+
+}

@@ -1,0 +1,14 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class TestInfo {
+
+	private int no;
+	private int lectNo;
+	private Date startDate;
+	private Date endDate;
+	private int cutline;
+	private int timeLimit;
+	
+}

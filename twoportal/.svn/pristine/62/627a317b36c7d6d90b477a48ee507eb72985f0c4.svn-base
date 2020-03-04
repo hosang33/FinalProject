@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.ProfessorDao">
+
+	<select id="getProFessorById" parameterType="String" resultType="Professor">
+		select 
+			pro_no 			as no,
+			pro_name		as name,
+			pro_id 			as id,
+			pro_pwd 		as pwd,
+			pro_position 	as position,
+			pro_create_date as createDate,
+			pro_image       as imageName,
+			dept_no 		as deptNo,
+			pro_access 		as access,
+			pro_email		as email
+		from
+			school_professors
+		where
+			pro_id = #{id}
+			
+	</select>
+	
+	<select id="getProFessorByNo" parameterType="int" resultType="Professor">
+		select 
+			pro_no 			as no,
+			pro_name		as name,
+			pro_id 			as id,
+			pro_position 	as position,
+			pro_create_date as createDate,
+			pro_image       as imageName,
+			dept_no 		as deptNo,
+			pro_access 		as access,
+			pro_email		as email
+		from
+			school_professors
+		where
+			pro_no = #{no}
+			
+	</select>
+	
+	<select id="getProfessors" parameterType="map" resultType="DeptProfessorDto">
+		select 
+		distinct 
+			A.pro_no 			as no,
+			A.pro_name		as name,
+			A.pro_id 			as id,
+			A.pro_position 	as position,
+			A.pro_create_date as createDate,
+			A.pro_image       as imageName,
+			B.dept_name 		as deptName,
+			A.pro_access 		as access,
+			A.pro_email		as email
+		from
+			school_professors A, school_departments B
+		where
+			A.dept_no = B.dept_no
+		<if test="deptNo != null and deptNo != 0">
+			and A.dept_no = #{deptNo}
+		</if>
+		<if test="position != null and position !=''" >
+			and A.pro_position = #{position}
+		</if>
+		<if test="proName != null and proName != ''">
+			and A.pro_name like CONCAT('%',#{proName},'%')
+		</if>
+		order by A.pro_no desc
+		
+		 LIMIT #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="totalCountProfessors" parameterType="map" resultType="int">
+		select
+			count(*)
+		from
+			school_professors
+		where
+			1=1
+		<if test="deptNo != null and deptNo != 0">
+			and dept_no = #{deptNo}
+		</if>
+		<if test="position != null and position !=''" >
+			and pro_position = #{position}
+		</if>
+		<if test="proName != null and proName != ''">
+			and pro_name like CONCAT('%',#{proName},'%')
+		</if>
+		
+	</select>
+</mapper>

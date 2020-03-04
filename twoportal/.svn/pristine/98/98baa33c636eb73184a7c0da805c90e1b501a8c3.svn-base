@@ -1,0 +1,17 @@
+package kr.ac.twoportal.vo;
+
+public class TestQuestion {
+
+	private int testNo;
+	private int infoNo;
+	private int no;
+	private String content;
+	private int scoring;
+	private String firstQuestion;
+	private String secondQuestion;
+	private String thirdQuestion;
+	private String forthQuestion;
+	private String fifthQuestion;
+	private String answer;
+	
+}

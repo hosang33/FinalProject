@@ -1,0 +1,13 @@
+package kr.ac.twoportal.service;
+
+
+import kr.ac.twoportal.dto.StudentMypageDto;
+
+
+public interface MyPageService {
+	
+	StudentMypageDto getMyPageDto(int stuNo);
+
+	void PwdIsSame(String pwd, String pwdSecond);
+
+}

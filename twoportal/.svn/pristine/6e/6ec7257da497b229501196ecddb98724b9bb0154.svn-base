@@ -1,0 +1,130 @@
+package kr.ac.twoportal.web.controller;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.ac.twoportal.dto.TuitionHisDto;
+import kr.ac.twoportal.form.TutionAddForm;
+import kr.ac.twoportal.service.DepartmentService;
+import kr.ac.twoportal.service.TuitionService;
+import kr.ac.twoportal.vo.Tuition;
+
+@Controller
+public class TutionController {
+
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@Autowired
+	private TuitionService tuitionService;
+	
+	@GetMapping("/staff/tutionAdd.hta")
+	public String TutionAdd(Model model) {
+		model.addAttribute("deptList", departmentService.getAllDepartment());
+		return "staff/budget/tutionAdd";
+	}
+	
+	@PostMapping("/staff/tutionAdd.hta")
+	public String TutionAddForm(TutionAddForm form) {
+		
+		Tuition tuition = new Tuition();
+		try {
+			tuition.setDeptNo(form.getDeptNo());
+			tuition.setPayStartDate(form.getStartdate());
+			tuition.setPayEndDate(form.getEnddate());
+			tuition.setPrice(form.getPayprice());
+			tuition.setQuarter(form.getQuarter());
+			
+		} catch(NullPointerException e) {
+			return "redirect:/staff/tutionAdd.hta?error=fail";
+		}
+
+		boolean isInsertTuitionSuccess = tuitionService.insertTuition(tuition);
+		
+		if(!isInsertTuitionSuccess) {
+			return "redirect:/staff/tutionAdd.hta?error=fail";
+		}
+		//완료 페이지 
+		return null;
+	}
+	
+	@GetMapping("/staff/tutionHistories.hta")
+	public String TutionHistories() {
+		
+		return "staff/budget/tutionHistories";
+	}
+	
+	
+	
+	@GetMapping("/staff/tuitionModify.hta")
+	public String tuitionModify(@RequestParam("deptNo") int deptNo, @RequestParam("quarter") String quarter, Model model) {
+		
+		
+		if("전반기".equals(quarter)) {
+			quarter = "before";
+		} else {
+			quarter = "after";
+		}
+		
+		model.addAttribute("tuitionForm", tuitionService.getTuitionForm(deptNo,quarter));
+		model.addAttribute("deptList", departmentService.getAllDepartment());
+		
+		return "staff/budget/tuitionModify";
+	}
+	
+	@GetMapping("/staff/tuitionModifyForm.hta")
+	public String tuitionModifyForm(TutionAddForm form,Model model) {
+		
+		Tuition tuition = new Tuition();
+		try {
+			tuition.setNo(form.getTuitionNo());
+			tuition.setDeptNo(form.getDeptNo());
+			tuition.setPayStartDate(form.getStartdate());
+			tuition.setPayEndDate(form.getEnddate());
+			tuition.setPrice(form.getPayprice());
+			tuition.setQuarter(form.getQuarter());
+			tuition.setIsClose("진행중");
+		} catch(NullPointerException e) {
+			return "redirect:/staff/tutionModify.hta?error=null?deptNo="+form.getDeptNo();
+		}
+		
+		boolean isSuccess = tuitionService.tuitionModify(tuition);
+		
+		if(!isSuccess) {
+			return "redirect:/staff/tutionModify.hta?error=duplicateDept&deptNo="+form.getDeptNo();
+		}
+		
+		model.addAttribute("success");
+		return "staff/budget/tutionHistories";
+	}
+	
+	@GetMapping("/staff/tuitionDelete.hta")
+	public String tuitionDelete(@RequestParam("tuitionNo") int tuitionNo) {
+		tuitionService.tutionDelete(tuitionNo);
+		return "staff/budget/tutionHistories";
+	}
+	
+
+	
+	@GetMapping("/getJsontutionHistories.hta")
+	@ResponseBody
+	public List<TuitionHisDto> getJsontutionHistories(@RequestParam("year") String year, @RequestParam("quarter") String quarter) {
+		
+		Tuition tuition = new Tuition();
+		tuition.setYear(year);
+		tuition.setQuarter(quarter);
+		
+		List<TuitionHisDto> resultTuitionHisList = tuitionService.getTutionHistoriesListByJsonParam(tuition);
+		
+		return resultTuitionHisList;
+	}
+	
+}

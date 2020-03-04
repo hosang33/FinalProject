@@ -1,0 +1,49 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.LectureListDao;
+import kr.ac.twoportal.dto.RegisterListDto;
+import kr.ac.twoportal.dto.RegisteredCountDto;
+import kr.ac.twoportal.vo.LectureList;
+
+@Service
+public class LectureListServiceImpl implements LectureListService {
+
+	@Autowired
+	private LectureListDao lectureListDao;
+
+	// JH : 수강신청화면에 뿌릴 자료 불러오기
+	@Override
+	public List<RegisterListDto> getLectureListByMajorAndDeptNoAndYear(Map<String, Object> criteria) {
+		return lectureListDao.getLectureListByMajorAndDeptNoAndYear(criteria);
+	}
+	
+	// JH : 수강신청테이블에 강의1개 저장
+	@Override
+	public void insertOneLecture(LectureList lectureList) {
+		lectureListDao.insertOneLecture(lectureList);
+	}
+	
+	// JH : 학생번호로 수강신청List불러오기
+	@Override
+	public List<RegisterListDto> getLectureListByStuNo(int stuNo) {
+		return lectureListDao.getLectureListByStuNo(stuNo);
+	}
+
+	// JH : 학생번호로 총신청과목,신청학점 불러오기
+	@Override
+	public RegisteredCountDto getSubCountAndCreditCountByStuNo(int stuNo) {
+		return lectureListDao.getSubCountAndCreditCountByStuNo(stuNo);
+	}
+
+	// JH : 학생번호와 강의번호로 수강리스트에 있는 과목 한개 삭제하기
+	@Override
+	public void deleteOneLecture(Map<String, Object> criteria) {
+		lectureListDao.deleteOneLecture(criteria);
+	}
+}

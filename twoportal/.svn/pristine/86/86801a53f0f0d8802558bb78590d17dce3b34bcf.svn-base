@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.LectureDao">
+
+	<select id="getAllLectureByProNo"  resultType="LectureListDto" >
+		select distinct
+			A.subject_name				subjectName,
+			A.subject_credit			subjectCredit,
+			A.subject_major				subjectMajor,
+			A.subject_object			subjectObject,
+			A.subject_target_year		targetYear,
+			B.lect_room					lectureRoom,
+			B.lect_total_number			lectureTotalNumber,
+			B.lect_create_date			lectureCreateDate,
+			B.pro_no					proNo,
+			D.dept_name					deptName,
+			B.lect_no					lectNo
+		from school_subjects A, school_lectures B, school_lecture_time C, school_departments D 
+		where
+			A.subject_no = B.subject_no
+			and B.lect_no = C.lect_no
+			and A.dept_no = D.dept_no
+		
+	</select>
+	
+	<select id="getLectureByLectNo"  resultType="LectureListDto" parameterType="int">
+		 select 
+				A.subject_name				subjectName,
+				A.subject_credit			subjectCredit,
+				B.lect_room					lectureRoom,
+				B.lect_total_number			lectureTotalNumber,
+				C.dept_name					deptName,
+				A.subject_target_year		targetYear,
+				A.subject_object			subjectObject,
+				A.subject_major				subjectMajor,
+				B.lect_no					lectNo,
+				(SELECT GROUP_CONCAT(lect_day, " " , lect_period1, ifnull(lect_period2, '') , ifnull(lect_period3, ''), "교시")   
+				FROM school_lecture_time Z 
+				where Z.lect_no = B.lect_no
+				 ) time  
+			from school_subjects A, school_lectures B,  school_departments C 
+			where
+				A.subject_no = B.subject_no
+				and A.dept_no = C.dept_no
+				and B.lect_no = #{value}
+	</select>
+</mapper>

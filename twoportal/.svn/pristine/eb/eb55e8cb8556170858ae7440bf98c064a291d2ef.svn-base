@@ -1,0 +1,50 @@
+package kr.ac.twoportal.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import kr.ac.twoportal.form.TutionAddForm;
+import kr.ac.twoportal.service.DepartmentService;
+import kr.ac.twoportal.service.TuitionService;
+import kr.ac.twoportal.vo.Tuition;
+
+@Controller
+public class TutionController {
+
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@Autowired
+	private TuitionService tuitionService;
+	
+	@GetMapping("/staff/tutionAdd.hta")
+	public String TutionAdd(Model model) {
+		model.addAttribute("deptList", departmentService.getAllDepartment());
+		return "staff/budget/tutionAdd";
+	}
+	
+	@PostMapping("/staff/tutionAdd.hta")
+	public String TutionAddForm(TutionAddForm form) {
+		System.out.println("찾은폼"+form);
+		Tuition tuition = new Tuition();
+		try {
+			tuition.setDeptNo(form.getDeptNo());
+			tuition.setPayStartDate(form.getStartdate());
+			tuition.setPayEndDate(form.getEnddate());
+			tuition.setPrice(form.getPayprice());
+			tuition.setQuarter(form.getQuarter());
+			
+		} catch(Exception e) {
+			return "redirect:/staff/tutionAdd.hta?error=fail";
+		}
+
+		boolean isInsertTuitionSuccess = tuitionService.insertTuition(tuition);
+		if(!isInsertTuitionSuccess) {
+			return "redirect:/staff/tutionAdd.hta?error=fail";
+		}
+		//완료 페이지 
+		return null;
+	}
+}

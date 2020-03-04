@@ -1,0 +1,40 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.activation.CommandMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.BoardDao;
+import kr.ac.twoportal.vo.Board;
+import kr.ac.twoportal.vo.Criteria;
+
+@Service
+public class BoardServiceImpl implements BoardService{
+	
+	@Autowired
+	private BoardDao boardDao;
+	
+	@Override
+	public int countBoardListTotal() {
+		return boardDao.countBoardList();
+	}
+
+	@Override
+	public List<Board> selectBoardList(Criteria cri) {
+		//System.out.println(boardDao.selectBoardList(cri));
+		return boardDao.selectBoardList(cri);
+	}
+	/*파라미터가 없는 select 조회*/
+	@Override
+	public List<Board> selectBoardListNotP() {
+		
+		return boardDao.selectBoardListNotP();
+	}
+
+
+		
+}

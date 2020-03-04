@@ -1,0 +1,16 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.ac.twoportal.dto.DeptProfessorDto;
+
+@Transactional
+public interface ProfessorService {
+	
+	List<DeptProfessorDto> getProfessors (Map<String, Object> map);
+	
+	int totalCountProfessors(Map<String, Object> map);
+}

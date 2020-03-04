@@ -1,0 +1,37 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import kr.ac.twoportal.dto.LectureListDto;
+import kr.ac.twoportal.dto.ProsessorDayCheckDto;
+import kr.ac.twoportal.vo.Criteria;
+import kr.ac.twoportal.vo.Lecture;
+
+import kr.ac.twoportal.dto.LectureandCancelDto;
+
+
+public interface LectureDao {
+
+	List<LectureListDto> getAllLectureBycri(Map<String, Object> criteria);
+
+	LectureListDto getLectureByLectNo(int lectNo);
+	
+	List<LectureListDto> getStudentLectureListByLectNo(int lectNo);
+	
+	
+	List<LectureListDto> getAllLectureapplyByProNo(Map<String, Object> map);
+	
+	int getCountLectureapplyByProNo (int proNo);
+	  
+	List<Lecture> getAllLectureByProNo(int proNo);
+
+	Lecture getLectureByNo(int lecNo);
+	
+	List<LectureandCancelDto> getLectureandcancel();
+	
+	void updateLecture (int lectNo);
+	
+	void insertLecture(Lecture lecture);
+
+}

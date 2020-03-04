@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  
+<div class="col-sm-2">
+	<div class="panel-group" >
+		<div class="panel panel-default">
+      		<div class="panel-heading" >
+        		<h4 class="panel-title">
+          			<a data-toggle="collapse" href="#collapse1">강의</a>
+        		</h4>
+      		</div>
+      		<!-- /common/b.hta 절대경로로 입력 -->
+      		<div id="collapse1" class="panel-collapse collapse">
+        		<div class="panel-body"><a href="/professor/lecture/list.hta">강의조회</a></div>
+        		<div class="panel-body"><a href="">개설신청</a></div>
+        		<div class="panel-body"><a href="">강의평가내역</a></div>
+      		</div>  	
+		</div>
+		<div class="panel panel-default">
+      		<div class="panel-heading" >
+        		<h4 class="panel-title">
+          			<a data-toggle="collapse" href="#collapse2">성적</a>
+        		</h4>
+      		</div>
+      		<div id="collapse2" class="panel-collapse collapse">
+        		<div class="panel-body"><a href="">학생성적조회</a></div>
+      		</div>	
+      	</div>
+		<div class="panel panel-default">
+      		<div class="panel-heading" >
+        		<h4 class="panel-title">
+          			<a data-toggle="collapse" href="#collapse3">교수게시판</a>
+        		</h4>  
+      		</div>
+      		<div id="collapse3" class="panel-collapse collapse">
+      		<!-- 교수일정, 공지사항만 다 접근가능함 나머지는 교수만 -->
+        		<div class="panel-body"><a href="">교수일정</a></div>
+        		<div class="panel-body"><a href="">공지사항</a></div>
+        		<div class="panel-body"><a href="">휴강신청</a></div>
+        		<div class="panel-body"><a href="">개인정보조회/수정</a></div>
+        		<div class="panel-body"><a href="">급여내역</a></div>
+      		</div>
+      	</div>
+  	</div>
+</div>

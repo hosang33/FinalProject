@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.LectureTimeDao">
+
+	<select id="getLectureTimeOnlyOne" parameterType="map" resultType="LectureTime">
+		select
+			lect_time_no	 	no,
+			lect_no				lectNo,
+			lect_day			day,
+			lect_period1		firstPeriod,
+			lect_period2		secondPeriod,
+			lect_period3		thirdPeriod
+		from
+			school_lecture_time
+		where
+			(lect_no = #{lectNo} and lect_day = #{today}) 
+		and
+			(lect_period1 = #{periodTime} OR lect_period2 = #{periodTime} OR lect_period3 = #{periodTime})
+	</select>
+</mapper>

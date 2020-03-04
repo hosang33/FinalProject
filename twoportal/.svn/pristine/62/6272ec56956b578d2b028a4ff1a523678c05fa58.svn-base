@@ -1,0 +1,20 @@
+package kr.ac.twoportal.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.StudentDao;
+import kr.ac.twoportal.dto.StudentMypageDto;
+
+@Service
+public class MyPageService {
+
+	@Autowired
+	private StudentDao studentDao;
+	
+	public StudentMypageDto getMyPageDto(int stuNo) {
+		//studentDao.getStudentByNo();
+		return null;
+	}
+
+}

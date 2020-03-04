@@ -1,0 +1,31 @@
+package kr.ac.twoportal.dao;
+
+
+import java.util.List;
+import java.util.Map;
+
+import kr.ac.twoportal.dto.RegisterListDto;
+
+import java.util.List;
+
+
+import kr.ac.twoportal.vo.LectureList;
+
+public interface LectureListDao {
+
+	LectureList getLectureListBylectstuNos(LectureList lectureList);
+
+
+	// JH : 수강신청화면에 뿌릴 자료 불러오기
+	List<RegisterListDto> getLectureListByMajorAndDeptNoAndYear(Map<String, Object> criteria);
+
+	List<LectureList> getLecturListsByLectNo(int lectNo);
+
+	LectureList getLectureListByLecNo(int lecNo);
+
+	List<LectureList> getLecturListsByListNo(int listNo);
+
+	LectureList getLecturListByListNo(int listNo);
+
+
+}

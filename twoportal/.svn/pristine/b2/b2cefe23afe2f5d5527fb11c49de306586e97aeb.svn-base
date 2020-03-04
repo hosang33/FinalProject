@@ -1,0 +1,14 @@
+package kr.ac.twoportal.dao;
+
+import java.util.List;
+
+import kr.ac.twoportal.dto.LectureAndGradeDto;
+import kr.ac.twoportal.vo.GradeResult;
+
+public interface GradeResultDao {
+
+	List<LectureAndGradeDto> getAllIsLectureGradeByProNo (int proNo);
+
+	void insertGrade(GradeResult gradeResult);
+	
+}

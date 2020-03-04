@@ -1,0 +1,8 @@
+package kr.ac.twoportal.vo;
+
+public class MainCategory {
+
+	private int no;
+	private String title;
+	
+}

@@ -1,0 +1,8 @@
+package kr.ac.twoportal.vo;
+
+public class Department {
+
+	private int no;
+	private String name;
+	
+}

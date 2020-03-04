@@ -1,0 +1,69 @@
+package kr.ac.twoportal.utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class LectureTimeUtils {
+	private LectureTimeUtils() {}
+
+	private static final SimpleDateFormat HHMM = new SimpleDateFormat("HH:mm");
+	
+	
+	public static int getPeriodTime() {
+		
+		Date date = new Date();
+		String now = HHMM.format(date);
+		
+		int compareS = now.compareTo("09:00");
+		int compareE = now.compareTo("09:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 1;
+		}
+		 compareS = now.compareTo("10:00");
+		 compareE = now.compareTo("10:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 2;
+		}
+		compareS = now.compareTo("11:00");
+		compareE = now.compareTo("11:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 3;
+		}
+		compareS = now.compareTo("12:00");
+		compareE = now.compareTo("12:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 4;
+		}
+		compareS = now.compareTo("13:00");
+		compareE = now.compareTo("13:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 5;
+		}
+		compareS = now.compareTo("14:00");
+		compareE = now.compareTo("14:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 6;
+		}
+		compareS = now.compareTo("15:00");
+		compareE = now.compareTo("15:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 7;
+		}
+		compareS = now.compareTo("16:00");
+		compareE = now.compareTo("16:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 8;
+		}
+		compareS = now.compareTo("17:00");
+		compareE = now.compareTo("17:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 9;
+		}
+		compareS = now.compareTo("18:00");
+		compareE = now.compareTo("18:50");
+		if(compareS > 0 && 0 > compareE) {
+			return 10;
+		}
+		return 0;
+	}
+}

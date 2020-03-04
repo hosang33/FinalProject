@@ -1,0 +1,38 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.LectureDao;
+import kr.ac.twoportal.dto.LectureListDto;
+
+@Service
+public class LectureServiceImpl implements LectureService {
+
+	@Autowired
+	private LectureDao lectureDao;
+	
+	@Override
+	public List<LectureListDto> getAllLectureByProNo(Map<String, Object> criteria) {
+		return lectureDao.getAllLectureByProNo(criteria);
+	}  
+
+	@Override
+	public LectureListDto getLectureByLectNo(int lectNo) {
+		return lectureDao.getLectureByLectNo(lectNo);
+	}
+	
+	@Override
+	public List<LectureListDto> getStudentLectureListByLectNo(int lectNo) {
+		return lectureDao.getStudentLectureListByLectNo(lectNo);
+	}
+	
+	@Override
+	public List<LectureListDto> getAllLectureapplyByProNo(int proNo) {
+		return lectureDao.getAllLectureapplyByProNo(proNo);
+	}
+	
+}

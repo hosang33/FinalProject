@@ -1,0 +1,109 @@
+package kr.ac.twoportal.web.controller;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.ac.twoportal.dto.LectureListDto;
+import kr.ac.twoportal.dto.LoginInfo;
+import kr.ac.twoportal.service.LectureService;
+import kr.ac.twoportal.utils.DateUtils;
+
+@Controller
+@RequestMapping("/professor/lecture")
+public class LectureController {
+
+	@Autowired
+	private LectureService lectureService;
+	
+	/////////////////////////개설신청/조회//////////////////////////
+	@GetMapping("/apply.hta")
+	public String apply(Model model, HttpSession session) {
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		List<LectureListDto> lectures = lectureService.getAllLectureapplyByProNo(pro.getProfessor().getNo());
+		
+		model.addAttribute("lectures",lectures);
+		
+		return "professor/lecture/apply"; 
+	}  
+	
+	 ///////////////강의조회///////////////////////////////////////////////////////////
+	@GetMapping("/list.hta")  
+	public String list() {
+		return "professor/lecture/list"; 
+	}  
+	
+	@GetMapping("/listcri.hta")
+	@ResponseBody
+	public List<LectureListDto> listcri(@RequestParam(value="year", required = false) String year,
+										@RequestParam(value="semester", required = false, defaultValue = "0") int semester,
+										@RequestParam(value="pageno", required = false, defaultValue = "1") int pageNo,
+										HttpSession session) {
+		Map<String, Object> criteria = new HashMap<String, Object>();
+		
+		Date date = new Date();
+		if (year == null) {
+			year = DateUtils.getYear(date);
+		}
+		
+		LoginInfo pro = (LoginInfo) session.getAttribute("loginInfo");
+		
+		System.out.println("년도" + year);
+		System.out.println("학기" + semester);
+		
+	//	* 한 화면당 표현할 레코드(데이터) 갯수
+		int rowsPerPage = 5;
+
+	//	* 한 화면당 표현할 페이지 번호 갯수
+		int pagesPerPage = 5;
+
+	//	* 요청한 페이지의 번호
+		int pageNoo = pageNo;
+
+	//	* 조건을 만족하는 전체 데이터 갯수
+		
+		
+		criteria.put("year", year);
+		criteria.put("semester", semester);
+		criteria.put("proNo", pro.getProfessor().getNo());
+		
+		
+		List<LectureListDto> lectures = lectureService.getAllLectureBycri(criteria);
+		System.out.println("렉쳐" + lectures.toString());
+		return lectures;  
+	}     
+	
+	@GetMapping("/detail.hta")  
+	@ResponseBody  
+	public LectureListDto detail(@RequestParam("lectno") int lectNo) {
+		LectureListDto lecture = lectureService.getLectureByLectNo(lectNo);
+		System.out.println(lecture.toString());
+		  
+		return lecture;
+	}
+	
+	@GetMapping("/stuLectList.hta")  
+	@ResponseBody  
+	public List<LectureListDto> stuLectList(@RequestParam("lectno") int lectNo) {
+		List<LectureListDto> lectures = lectureService.getStudentLectureListByLectNo(lectNo);
+		System.out.println("학생 " + lectures.toString());
+		     
+		return lectures;
+	}
+
+	
+}
+  

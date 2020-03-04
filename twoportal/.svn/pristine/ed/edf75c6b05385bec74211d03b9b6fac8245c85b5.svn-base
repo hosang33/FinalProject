@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.SubjectDao">
+
+	<select id="getSubjectByNo" parameterType="int" resultType="Subject">
+		select
+			subject_no				no,	
+			dept_no					deptNo,
+			subject_name			name,
+			subject_credit			credit,
+			subject_major			major,
+			subject_object			object,
+			subject_target_year		targetYear
+		from
+			school_subjects
+		where
+			subject_no = #{value}
+	</select>
+	
+	<insert id="insertSubject" parameterType="Subject" useGeneratedKeys="true" keyProperty="no">
+		insert into school_subjects (dept_no, subject_name, subject_credit, subject_major, subject_object, subject_target_year)
+		values (#{deptNo}, #{name}, #{credit}, #{major}, #{object}, #{targetYear})
+	</insert>
+	
+	<delete id="deleteSubjectBySubNo" parameterType="int">
+		delete from school_subjects
+		where subject_no = #{value}
+	</delete>
+	
+</mapper>

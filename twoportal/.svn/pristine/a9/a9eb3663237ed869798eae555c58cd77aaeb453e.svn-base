@@ -1,0 +1,13 @@
+package kr.ac.twoportal.service;
+
+import kr.ac.twoportal.dto.LoginInfo;
+
+public interface LoginService {
+
+
+	LoginInfo getLoginCheck(LoginInfo loginInfo);
+
+	String getPathByJob(String job);
+
+	String getHomePathByJob(String job);
+}

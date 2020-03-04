@@ -1,0 +1,28 @@
+package kr.ac.twoportal.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.TuitionDao;
+import kr.ac.twoportal.vo.Tuition;
+
+@Service
+public class TuitionServiceImpl implements TuitionService {
+
+	@Autowired
+	private TuitionDao tuitionDao;
+	
+	@Override
+	public boolean insertTuition(Tuition tuition) {
+		Tuition isTuitionDuplicate = tuitionDao.getTutionDuplicateCheck(tuition);
+		if(isTuitionDuplicate != null) {
+			return false;
+		}
+		tuitionDao.insertTuition(tuition);
+		return true;
+	}
+
+}

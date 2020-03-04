@@ -1,0 +1,15 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class Lecture {
+
+	private int no;
+	private int subjectNo;
+	private int proNo;
+	private Date createDate;
+	private int totalNumber;
+	private String semester;
+	private String enabled;
+	private String cancelEnabled;
+}

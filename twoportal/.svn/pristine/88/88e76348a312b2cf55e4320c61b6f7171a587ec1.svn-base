@@ -1,0 +1,13 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.Tuition;
+
+public interface TuitionDao {
+
+	void insertTuition(Tuition tuition);
+
+	Tuition getTuitionByNo(int no);
+
+	Tuition getTutionDuplicateCheck(Tuition tuition);
+
+}

@@ -1,0 +1,12 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class LectureDayCheck {
+
+	private int no;
+	private int listNo;
+	private Date createDate;
+	private String enabled;
+	
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.LectureListDao">
+
+	<!-- 수강신청 table에 데이터 저장 -->
+	<insert id="insertLectureTable" parameterType="LectureList">
+		insert into school_student_lecture_list
+		(lect_no, stu_no, lecture_list_create_date)
+		values
+		(#{lectNo}, #{stuNo}, now())
+	</insert>
+	
+	<select id="getLectureListByLecNo" parameterType="int" resultType="LectureList">
+		select
+			lecture_list_no				no,
+			lect_no						lectNo,
+			stu_no						stuNo,
+			lecture_list_create_date	createDate
+		from
+			school_student_lecture_list
+		where
+			lect_no = #{value}
+	
+	</select>
+	
+	<select id="getLectureListBylectstuNos" parameterType="LectureList" resultType="LectureList">
+		select
+			lecture_list_no				no,
+			lect_no						lectNo,
+			stu_no						stuNo,
+			lecture_list_create_date	createDate
+		from
+			school_student_lecture_list
+		where
+			lect_no = #{lectNo}
+		and
+			stu_no = #{stuNo}
+			
+	</select>
+	
+	<!-- JH : 조건으로 수강신청할 강의목록 검색 -->
+	<select id="getLectureListByMajorAndDeptNoAndYear" parameterType="map" resultType="RegisterListDto">
+		select
+			A.subject_no			no,
+			A.dept_no				deptNo,
+			A.subject_credit		credit,
+			A.subject_major			major,
+			A.subject_target_year	targetYear,
+			B.lect_place			place,
+			B.lect_room				room,
+			B.lect_total_number		totalNumber,
+			C.pro_name				name				
+		from
+			school_subjects A, school_lectures B, school_professors C
+		where
+			A.subject_no = B.subject_no
+			and B.pro_no = C.pro_no
+			and A.dept_no = #{dept}
+			and A.subject_target_year = #{year}
+			<if test="ismajor != 'majorandminor'">
+				and A.subject_major = #{ismajor}
+			</if>
+	</select>
+
+	<select id="getLecturListsByLectNo" parameterType="int" resultType="LectureList">
+		select
+			lecture_list_no				no,
+			lect_no						lectNo,
+			stu_no						stuNo,
+			lecture_list_create_date	createDate
+		from
+			school_student_lecture_list
+		where
+			lect_no = #{value}
+		
+	</select>
+	
+	<select id="getLecturListByListNo" parameterType="int" resultType="LectureList">
+		select
+			lecture_list_no				no,
+			lect_no						lectNo,
+			stu_no						stuNo,
+			lecture_list_create_date	createDate
+		from
+			school_student_lecture_list
+		where
+			lecture_list_no = #{value}
+	</select>
+
+</mapper>

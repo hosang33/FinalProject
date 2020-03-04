@@ -1,0 +1,20 @@
+package kr.ac.twoportal.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.StudentDao;
+import kr.ac.twoportal.vo.Student;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+
+	@Autowired
+	private StudentDao studentDao;
+	
+	@Override
+	public void addOneStudent(Student student) {
+		studentDao.addOneStudent(student);
+	}
+	
+}

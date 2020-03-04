@@ -1,0 +1,15 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.ac.twoportal.dto.LectureListDto;
+
+@Transactional
+public interface LectureService {
+	
+	List<LectureListDto> getAllLectureByProNo();
+
+	LectureListDto getLectureByLectNo (int lectNo);
+}

@@ -1,0 +1,7 @@
+package kr.ac.twoportal.service;
+
+import kr.ac.twoportal.vo.Student;
+
+public interface StudentService {
+	void addOneStudent(Student student);
+}

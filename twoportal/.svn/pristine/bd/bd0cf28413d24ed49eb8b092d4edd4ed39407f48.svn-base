@@ -1,0 +1,52 @@
+package kr.ac.twoportal.service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.twoportal.dao.StudentDao;
+import kr.ac.twoportal.dto.DeptStudent;
+import kr.ac.twoportal.vo.Student;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+
+	@Autowired
+	private StudentDao studentDao;
+	
+	@Override
+	public void addOneStudent(Student student) {
+		System.out.println(student);
+		studentDao.addOneStudent(student);
+	}
+
+	@Override
+	public void addStudents(List<Student> students) {
+		for(Student s : students) {
+			studentDao.addOneStudent(s);
+		}
+		
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		// TODO Auto-generated method stub
+		return studentDao.getAllStudent();
+	}
+
+	@Override
+	public Student getStudentByNo(int no) {
+		
+		return studentDao.getStudentByNo(no);
+	}
+
+	@Override
+	public List<DeptStudent> getAllStudentByCri(Map<String, Object> criteria) {
+		
+		return studentDao.getAllStudentByCri(criteria);
+	}
+	
+}

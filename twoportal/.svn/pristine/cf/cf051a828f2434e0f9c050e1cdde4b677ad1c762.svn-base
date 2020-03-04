@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.GradeResultDao">
+
+	<select id="getAllIsLectureGradeByProNo" parameterType="int" resultType="LectureAndGradeDto">
+		select
+			X.grade_no				gradeNo,
+			Y.lect_no				lectNo,
+			Y.lect_create_date		lectCreateDate,
+			Y.lect_semester			lectSemester,
+			V.subject_name			subName
+		from school_lectures Y, school_subjects V, school_student_lecture_list Z
+		left join school_grades X on Z.lecture_list_no = X.lecture_list_no
+		where Z.lect_no = Y.lect_no
+			and V.subject_no = Y.subject_no
+			and Y.lect_status = '종료'
+			and Y.pro_no = #{value}
+		group by Y.lect_no
+	</select>
+	
+	<insert id="insertGrade" parameterType="GradeResult">
+		insert into school_grades (lecture_list_no, grade_score, grade_rating, grade_rank, grade_final)
+		values (#{lectureListNo}, #{score}, #{rating}, #{rank}, #{finalScore})
+	</insert>
+	
+</mapper>

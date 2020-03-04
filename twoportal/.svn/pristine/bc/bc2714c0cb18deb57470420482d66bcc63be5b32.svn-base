@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.twoportal.dao.LectureDao">
+	<!-- 
+	<select id="getAllLectureapplyByProNo" parameterType="map" resultType="LectureListDto" >
+		select
+			A.subject_name				subjectName,
+			A.subject_credit			subjectCredit,
+			A.subject_major				subjectMajor,
+			A.subject_object			subjectObject,
+			A.subject_target_year		targetYear,
+			B.lect_room					lectureRoom,
+			B.lect_place				lectPlace,
+			B.lect_total_number			lectureTotalNumber,
+			B.lect_create_date			lectureCreateDate,
+			B.pro_no					proNo,
+			D.dept_name					deptName,
+			B.lect_no					lectNo,
+			B.lect_semester				lectSemester,
+			B.lect_cancel_enabled		cancelEnabled
+		from school_subjects A, school_lectures B, school_departments D
+		where
+			A.subject_no = B.subject_no
+			and A.dept_no = D.dept_no
+			and B.pro_no = #{proNo}
+		order by B.lect_create_date desc
+	</select>
+	 -->
+	
+	<!-- 강의 N, 교수번호 받기,  끝-->
+	<select id="getAllLectureByProNo" parameterType="map" resultType="LectureListDto" >
+		select
+			A.subject_name				subjectName,
+			A.subject_credit			subjectCredit,
+			A.subject_major				subjectMajor,
+			A.subject_object			subjectObject,
+			A.subject_target_year		targetYear,
+			B.lect_room					lectureRoom,
+			B.lect_place				lectPlace,
+			B.lect_total_number			lectureTotalNumber,
+			B.lect_create_date			lectureCreateDate,
+			B.pro_no					proNo,
+			D.dept_name					deptName,
+			B.lect_no					lectNo,
+			B.lect_semester				lectSemester,
+			B.lect_cancel_enabled		cancelEnabled
+		from school_subjects A, school_lectures B, school_departments D
+		where
+			A.subject_no = B.subject_no
+			and A.dept_no = D.dept_no
+			and B.lect_enabeld = 'N'
+			<if test="year != null">
+				and year(B.lect_create_date) = #{year}
+			</if>				
+			<if test="semester != null and semester != 0">
+				and B.lect_semester = #{semester}
+			</if>
+			<if test="proNo != 0">
+				and B.pro_no = #{proNo}			  
+			</if>		
+		order by B.lect_create_date desc
+		
+	</select>
+	
+	<select id="getStudentLectureListByLectNo" parameterType="int" resultType="LectureListDto">
+		select
+			D.dept_name				deptName,
+			E.stu_name				stuName,
+			E.stu_id				stuId,
+			E.stu_grade				stuGrade,
+			E.stu_phone				stuPhone,
+			E.stu_email				stuEmail
+		from school_departments D, school_student_lecture_list C, school_students E 
+		where
+			C.stu_no = E.stu_no
+			and E.dept_no = D.dept_no
+			and C.lect_no = #{value}
+	</select>
+			
+	<select id="getLectureByLectNo"  resultType="LectureListDto" parameterType="int">
+		 select 
+				A.subject_name				subjectName,
+				A.subject_credit			subjectCredit,
+				B.lect_room					lectureRoom,
+				B.lect_total_number			lectureTotalNumber,
+				C.dept_name					deptName,
+				A.subject_target_year		targetYear,
+				A.subject_object			subjectObject,
+				A.subject_major				subjectMajor,
+				B.lect_no					lectNo,
+				B.lect_place				lectPlace,
+				(SELECT GROUP_CONCAT(lect_day, " " , lect_period1, ifnull(lect_period2, '') , ifnull(lect_period3, ''), "교시")   
+				FROM school_lecture_time Z 
+				where Z.lect_no = B.lect_no
+				 ) time  
+			from school_subjects A, school_lectures B,  school_departments C 
+			where
+				A.subject_no = B.subject_no
+				and A.dept_no = C.dept_no
+				and B.lect_no = #{value}
+	</select>
+</mapper>

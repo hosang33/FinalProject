@@ -1,0 +1,11 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class LectureList {
+
+	private int no;
+	private int lectNo;
+	private int stuNo;
+	private Date createDate;
+}

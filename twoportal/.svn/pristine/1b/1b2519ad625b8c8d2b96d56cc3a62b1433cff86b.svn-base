@@ -1,0 +1,12 @@
+package kr.ac.twoportal.vo;
+
+import java.util.Date;
+
+public class BoardReplie {
+
+	private int no;
+	private int boardNo;
+	private String content;
+	private Date createDate;
+	
+}

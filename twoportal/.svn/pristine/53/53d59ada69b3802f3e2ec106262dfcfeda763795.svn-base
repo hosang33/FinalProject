@@ -1,0 +1,24 @@
+package kr.ac.twoportal.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.ac.twoportal.service.ClassService;
+
+@Controller
+@RequestMapping("/student/class")
+public class ClassController {
+	
+	@Autowired
+	private ClassService classService;
+	
+	// 수강신청(insert) / 수강삭제(delete)
+	
+	@GetMapping("/registerCart.hta")
+	public String registerAndModify() {
+		
+		return "student/class/registerCart";
+	}
+}

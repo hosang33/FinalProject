@@ -1,0 +1,9 @@
+package kr.ac.twoportal.dao;
+
+import kr.ac.twoportal.vo.Student;
+
+public interface StudentDao {
+
+	Student getStudentById(String id);
+	void addOneStudent(Student student);
+}
