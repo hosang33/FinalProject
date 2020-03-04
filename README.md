@@ -2,9 +2,9 @@
 ### 0. 개발 환경
 ##### 사용언어&프레임워크- Java/ Spring/ jsp&Servlet/ HTML/ CSS/ Javascript/ jQuery/ Vue.js/ Nodejs
 ##### 라이브러리- ojdbc7, Junit5, Log4j, quartz, Apache POI, socket.io, mongoose
-##### API- 카카오 지도 API/ QR코드 API/ 아임포트 결제 API
 ##### 서버- Tomcat 8.0, Express
 ##### DB - MySQL 5.7, MongoDB 4.2
+##### API- 카카오 지도 API/ QR코드 API/ 아임포트 결제 API
 
 ### 1. 주제 
 ##### 대학교 학사 관리 포털 사이트 
